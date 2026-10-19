@@ -1,0 +1,39 @@
+{
+    "disease": "heart_disease",
+    "champion_model": "SVM",
+    "champion_metrics": {
+        "Model": "SVM",
+        "Accuracy": 0.2,
+        "Precision": 0.2,
+        "Recall": 1.0,
+        "Specificity": 0.0,
+        "F1-Score": 0.3333,
+        "ROC-AUC": 0.5254,
+        "CV_F1_Mean": 0.2569,
+        "CV_F1_Std": 0.0427
+    },
+    "total_samples": 10000,
+    "test_samples": 2000,
+    "feature_columns": [
+        "Age",
+        "Gender",
+        "Blood Pressure",
+        "Cholesterol Level",
+        "Exercise Habits",
+        "Smoking",
+        "Family Heart Disease",
+        "Diabetes",
+        "BMI",
+        "High Blood Pressure",
+        "Low HDL Cholesterol",
+        "High LDL Cholesterol",
+        "Alcohol Consumption",
+        "Stress Level",
+        "Sleep Hours",
+        "Sugar Consumption",
+        "Triglyceride Level",
+        "Fasting Blood Sugar",
+        "CRP Level",
+        "Homocysteine Level"
+    ]
+}

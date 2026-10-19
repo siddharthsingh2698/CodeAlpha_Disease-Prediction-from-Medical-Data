@@ -815,7 +815,7 @@ def build():
 <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-[#e2e8f0] shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
 {header_content}
 </header>
-<aside class="fixed left-0 top-27 bottom-0 w-72 bg-surface-container-lowest border-r border-[#e2e8f0] z-40 overflow-y-auto p-space-md flex flex-col gap-space-md shadow-[0_1px_3px_0_rgba(15,23,42,0.02)]">
+<aside class="fixed left-0 bottom-0 w-72 bg-surface-container-lowest border-r border-[#e2e8f0] z-40 overflow-y-auto p-space-md flex flex-col gap-space-md shadow-[0_1px_3px_0_rgba(15,23,42,0.02)]" style="top: 108px;">
   <div class="flex items-center gap-space-xs pb-space-sm border-b border-[#f1f5f9]">
     <span class="material-symbols-outlined text-primary text-xl">tune</span>
     <span class="font-title-md text-title-md text-on-surface">Diagnostic Control Center</span>
@@ -890,7 +890,7 @@ def build():
 
 <!-- Main Container for All 4 Views -->
 <div class="pl-72">
-  <main class="w-full min-h-screen pt-27 pb-16 px-margin bg-background">
+  <main class="w-full min-h-screen pb-16 px-margin bg-background" style="padding-top: 124px;">
     <!-- View 1: Patient Risk Assessment -->
     <div id="view-patient-risk" class="app-view">
       {main_triage}

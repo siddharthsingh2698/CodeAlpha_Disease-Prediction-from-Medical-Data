@@ -41,13 +41,31 @@ if css_file.exists():
     with open(css_file, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+# UI Experience Mode in Sidebar
+st.sidebar.image("https://img.icons8.com/color/96/medical-heart.png", width=70)
+st.sidebar.title("Diagnostic Center")
+
+ui_mode = st.sidebar.radio(
+    "🖥️ UI Experience Mode",
+    ["🌟 Stitch Modern Clinical Platform (Recommended)", "📋 Classic Streamlit Dashboard"],
+    index=0
+)
+
+if ui_mode.startswith("🌟"):
+    col_hdr, col_lnk = st.columns([3, 1])
+    with col_hdr:
+        st.markdown("<h2 style='margin:0;'>🩺 Multi-Disease Clinical Platform — Stitch UI Edition</h2>", unsafe_allow_html=True)
+        st.caption("Active ML Engine: Logistic Regression, SVM, Random Forest & XGBoost | 100% Interactive Controls")
+    with col_lnk:
+        st.link_button("🚀 Open Direct Fullscreen (Port 8000)", "http://localhost:8000", type="primary", use_container_width=True)
+
+    import streamlit.components.v1 as components
+    components.iframe("http://localhost:8000", height=1250, scrolling=True)
+    st.stop()
+
 # Header
 st.markdown("<h1 class='main-title'>🩺 Multi-Disease Prediction Platform</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>Predictive Clinical Risk Assessment powered by Logistic Regression, SVM, Random Forest, and XGBoost.</p>", unsafe_allow_html=True)
-
-# Sidebar
-st.sidebar.image("https://img.icons8.com/color/96/medical-heart.png", width=70)
-st.sidebar.title("Diagnostic Center")
 
 disease_choice = st.sidebar.selectbox(
     "Select Target Disease",

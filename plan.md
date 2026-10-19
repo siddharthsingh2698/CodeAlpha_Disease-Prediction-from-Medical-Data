@@ -175,9 +175,9 @@ flowchart LR
 | Milestone | Target Phase | Status | Key Output Artifact |
 | :--- | :--- | :--- | :--- |
 | **M1: Architecture & PRD Sign-off** | Phase 1 | Completed | `prd.md`, `architecture.md`, `plan.md` |
-| **M2: Data Ingestion & Clean Pipelines** | Phase 2 & 3 | Planned | `src/data_loader.py`, `src/preprocessing.py` |
-| **M3: Model Training & Benchmarks (4 Algos)** | Phase 4 | Planned | `src/train.py`, `models/saved_models/*.joblib`, `models/metrics/*.csv` |
-| **M4: Explainability Engine (SHAP)** | Phase 5 | Planned | `src/explainability.py` |
-| **M5: Interactive Streamlit Web App** | Phase 6 | Planned | `app/main.py`, `app/components/*` |
-| **M6: Testing & Quality Assurance** | Phase 7 | Planned | `tests/test_*.py` passing suite |
-| **M7: Final Packaging & Deployment** | Phase 8 | Planned | `README.md`, `Dockerfile` |
+| **M2: Data Ingestion & Clean Pipelines** | Phase 2 & 3 | Completed | `src/data_loader.py`, `src/preprocessing.py`, `data/processed/` |
+| **M3: Model Training & Benchmarks (4 Algos)** | Phase 4 | Completed | `src/train.py`, `models/saved_models/*.joblib`, `models/metrics/*.csv` |
+| **M4: Explainability Engine (SHAP)** | Phase 5 | Completed | `src/explainability.py`, `reports/figures/*_shap_summary.png` |
+| **M5: Interactive Streamlit Web App** | Phase 6 | Completed | `app/main.py`, `app/components/*`, Batch CSV screening |
+| **M6: Testing & Quality Assurance** | Phase 7 | Completed | `tests/test_*.py` (16 passing test assertions) |
+| **M7: Final Packaging & Deployment** | Phase 8 | Completed | `README.md`, `Dockerfile`, `.github/workflows/ci.yml` |

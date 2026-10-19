@@ -1,33 +1,34 @@
 # Disease-Prediction-from-Medical-Data
 
+[![CI Pipeline](https://github.com/siddharthsingh2698/Disease-Prediction-from-Medical-Data/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthsingh2698/Disease-Prediction-from-Medical-Data/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Machine Learning](https://img.shields.io/badge/Scikit--Learn-1.4+-orange.svg)](https://scikit-learn.org/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.4+-orange.svg)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-red.svg)](https://xgboost.readthedocs.io/)
+[![SHAP](https://img.shields.io/badge/SHAP-Explainable_AI-brightgreen.svg)](https://shap.readthedocs.io/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-ff4b4b.svg)](https://streamlit.io/)
+[![Docker Ready](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An end-to-end, clinically-oriented **Multi-Disease Prediction Platform** that predicts diagnostic risk probabilities for **Heart Disease**, **Diabetes**, and **Breast Cancer** using structured patient biomarkers and four core classification algorithms:
-- **Support Vector Machine (SVM)**
-- **Logistic Regression**
-- **Random Forest Classifier**
-- **Extreme Gradient Boosting (XGBoost)**
+- **Logistic Regression** (Optimized linear probabilistic model)
+- **Support Vector Machine (SVM)** (Optimized with RBF/Linear kernels)
+- **Random Forest Classifier** (Bagging ensemble of decision trees)
+- **Extreme Gradient Boosting (XGBoost)** (Regularized gradient boosting)
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Capabilities
 
 * **Multi-Disease Coverage**: Unified risk assessment across 3 critical medical conditions:
-  * **Cardiovascular / Heart Disease** (10,000 patient records, 20 clinical & lifestyle biomarkers).
+  * **Cardiovascular / Heart Disease** ($N = 10,000$ patient records, 20 clinical & lifestyle biomarkers).
   * **Type-2 Diabetes** (UCI Pima Indians dataset, 8 physiological indicators with zero-imputation).
   * **Breast Cancer (Malignant vs. Benign)** (UCI Wisconsin Diagnostic dataset, 30 cellular nuclear features).
 * **4-Way Algorithm Benchmarking**: Simultaneously trains and validates Logistic Regression, SVM, Random Forest, and XGBoost using **5-Fold Stratified Cross-Validation**.
 * **Automatic Champion Model Selection**: Ranks models by balanced F1-Score, Sensitivity/Recall (minimizing false negatives in clinical context), and ROC-AUC.
-* **Explainable AI (XAI)**: Integrated with **SHAP (SHapley Additive exPlanations)** to break down individual patient risk factors and highlight which specific biomarkers drove the prediction.
-* **Interactive Healthcare Dashboard**: Built with **Streamlit** featuring:
-  * Dynamic biomarker input forms with one-click healthy/high-risk presets.
-  * Real-time risk probability gauge meter (Low, Moderate, High risk tiers).
-  * Side-by-side model comparison tables, confusion matrices, and ROC curves.
-  * Dataset explorer and statistical summaries.
+* **Explainable AI (SHAP)**: Integrated with **SHAP (SHapley Additive exPlanations)** to break down individual patient risk factors and highlight which specific biomarkers drove the prediction.
+* **Batch Screening (CSV)**: High-throughput batch inference allows clinicians to upload full patient cohorts and export screened results with assigned risk categories.
+* **Exportable Diagnostic Reports**: Generates downloadable clinical diagnostic summaries in Markdown with complete patient inputs, risk percentages, and driving factors.
+* **Interactive Healthcare Dashboard**: Built with **Streamlit** featuring real-time risk gauges, side-by-side benchmark tables, interactive confusion matrices, and multi-model ROC curves.
 
 ---
 
@@ -35,66 +36,91 @@ An end-to-end, clinically-oriented **Multi-Disease Prediction Platform** that pr
 
 ```plaintext
 Disease-Prediction-from-Medical-Data/
+├── .github/workflows/
+│   └── ci.yml                          # Continuous Integration test pipeline
 ├── data/
 │   ├── raw/                            # Raw benchmark datasets
 │   │   ├── heart_disease.csv           # 10,000 patient cardiovascular records
 │   │   ├── diabetes.csv                # Pima Indians diabetes dataset
 │   │   └── breast_cancer.csv           # Wisconsin diagnostic breast cancer dataset
-│   └── processed/                      # Cleaned train/test data
+│   └── processed/                      # Stratified 80/20 train/test partitions
 ├── models/
-│   ├── saved_models/                   # Serialized .joblib pipelines (12 models + 3 champions)
+│   ├── saved_models/                   # 12 tuned .joblib pipelines + 3 champions
 │   └── metrics/                        # Benchmark metrics CSVs & metadata JSONs
 ├── notebooks/
-│   ├── diabetes.ipynb                  # Exploratory Data Analysis for Diabetes
+│   ├── 01_exploratory_data_analysis.ipynb # Complete EDA notebook
+│   ├── diabetes.ipynb                  # Exploratory analysis for Diabetes
 │   ├── breast-cancer.ipynb             # Exploratory analysis for Breast Cancer
 │   └── diabetes.csv                    # Local data copy for notebook execution
+├── reports/
+│   ├── eda_summary_report.md           # Statistical data profiling report
+│   ├── model_benchmarks_report.md      # Hyperparameter tuning benchmark report
+│   ├── explainability_report.md        # SHAP interpretability report
+│   └── figures/                        # High-resolution ROC, SHAP & EDA plots
 ├── src/
 │   ├── config.py                       # Global paths, thresholds, and parameters
 │   ├── data_loader.py                  # Dataset ingestion and target formatting
 │   ├── preprocessing.py                # Leakage-free Scikit-Learn transformers
-│   ├── train.py                        # Model training, 5-fold CV & champion selector
-│   ├── evaluate.py                     # Medical metrics (Accuracy, Recall, F1, ROC-AUC)
+│   ├── train.py                        # Model tuning with 5-fold CV & GridSearchCV
+│   ├── evaluate.py                     # Medical metrics & ROC curve plotter
 │   ├── explainability.py               # SHAP explainers and factor attribution
 │   └── predictor.py                    # Unified single-patient inference engine
 ├── app/
 │   ├── main.py                         # Streamlit application entry point
 │   ├── components/
 │   │   ├── input_forms.py              # Patient clinical input widgets & presets
-│   │   └── visualizers.py              # Risk gauge meter & benchmark charts
+│   │   ├── visualizers.py              # Risk gauge meter & benchmark charts
+│   │   └── report_generator.py         # Clinical diagnostic report export helper
 │   └── styles/
 │       └── custom.css                  # Modern healthcare UI theme
 ├── tests/
-│   └── test_preprocessing.py           # Unit tests for preprocessing pipelines
+│   ├── test_data_loader.py             # Data ingestion integrity tests
+│   ├── test_preprocessing.py           # Preprocessing pipeline tests
+│   ├── test_predictor.py               # Inference and probability scoring tests
+│   ├── test_explainability.py          # SHAP attribution tests
+│   └── test_report_generator.py        # Diagnostic report generator tests
 ├── prd.md                              # Product Requirements Document
 ├── architecture.md                     # System Architecture Document
 ├── plan.md                             # Step-by-Step Implementation Roadmap
 ├── requirements.txt                    # Project Python dependencies
+├── Dockerfile                          # Containerization specification
 └── README.md                           # Documentation
 ```
 
 ---
 
+## 🏆 Benchmark Performance Results
+
+All models evaluated on held-out test splits ($20\%$) using 5-Fold Stratified Cross-Validation:
+
+| Disease Domain | Champion Algorithm | Test Accuracy | Sensitivity / Recall | F1-Score | ROC-AUC | Best Hyperparameters |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **Breast Cancer** | **Logistic Regression** | **99.12%** | **97.62%** | **98.80%** | **0.9977** | `C=0.1, solver='liblinear'` |
+| **Diabetes** | **XGBoost Classifier** | **75.97%** | **81.48%** | **70.40%** | **0.8147** | `lr=0.04, depth=3, pos_weight=2.0` |
+| **Heart Disease** | **SVM Classifier** | **20.00%** | **100.0%** | **33.33%** | **0.4886** | `C=0.5, gamma='auto'` |
+
+*(Full details and ROC Curves available in `reports/model_benchmarks_report.md`)*
+
+---
+
 ## 🚀 Quickstart Guide
 
-### 1. Clone the Repository
+### 1. Local Setup
 ```bash
+# Clone the repository
 git clone https://github.com/siddharthsingh2698/Disease-Prediction-from-Medical-Data.git
 cd Disease-Prediction-from-Medical-Data
-```
 
-### 2. Install Dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 3. Train and Benchmark All Models
-To train all 4 algorithms across Heart Disease, Diabetes, and Breast Cancer:
+### 2. Run Test Suite
 ```bash
-python -m src.train
+python -m pytest
 ```
-This will train 12 individual models, evaluate them on holdout test sets using 5-Fold Stratified Cross-Validation, select the Champion model for each disease, and serialize artifacts to `models/saved_models/`.
 
-### 4. Launch the Interactive Web Application
+### 3. Launch the Web Application
 ```bash
 streamlit run app/main.py
 ```
@@ -102,24 +128,19 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 📊 Benchmark Results
+## 🐳 Running with Docker
 
-| Disease Domain | Champion Algorithm | Test Accuracy | Sensitivity / Recall | F1-Score | ROC-AUC |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **Heart Disease** | Random Forest / XGBoost | ~85-92% | ~88-94% | ~86-91% | ~0.92+ |
-| **Diabetes** | Random Forest / Logistic Reg | ~77-80% | ~76-82% | ~74-78% | ~0.84+ |
-| **Breast Cancer** | SVM / Logistic Regression | ~96-98% | ~95-98% | ~96-98% | ~0.99+ |
+Build and run the containerized application with a single command:
+```bash
+# Build the Docker image
+docker build -t disease-predictor .
 
-*(Exact metrics for your run are recorded in `models/metrics/*_metrics.csv`)*
-
----
-
-## 🔬 Explainable AI (SHAP)
-Medical applications require interpretability beyond raw black-box accuracy. The system decomposes predictions into:
-* **Positive Risk Drivers**: Specific biomarkers (e.g., Elevated Fasting Glucose > 140 mg/dL, High Blood Pressure, or Concavity > 0.15) pushing the risk score upward.
-* **Protective Factors**: Biomarkers (e.g., Optimal BMI, High Exercise Habits, or Normal Sleep) reducing the predicted disease probability.
+# Run the container
+docker run -p 8501:8501 disease-predictor
+```
+Access the application at `http://localhost:8501`.
 
 ---
 
 ## ⚠️ Clinical Disclaimer
-This system is developed strictly for educational, academic, and clinical decision-support research. It is **not** a certified medical diagnostic device and must not replace professional clinical diagnosis, clinical consultation, or laboratory testing by a qualified healthcare provider.
+This application is designed solely for educational, academic, and clinical decision-support research. It is **not** a certified medical diagnostic device and must not replace professional clinical diagnosis, clinical consultation, or laboratory testing by a qualified healthcare provider.

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unique & User-Friendly UI Concepts for Multi-Disease Prediction</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .organ-hover:hover {
+      transform: scale(1.04);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-6 min-h-screen font-sans">
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-3xl">🩺</span>
+          <h1 class="text-2xl font-bold tracking-tight text-slate-900">Next-Gen Clinical UI Concepts</h1>
+        </div>
+        <p class="text-sm text-slate-500 mt-1">4 Distinctive, Human-Centered Interface Paradigms for Multi-Disease Diagnostics</p>
+      </div>
+      <div class="flex gap-2">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">UX Tested</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">4 Algorithms Active</span>
+      </div>
+    </div>
+
+    <!-- Navigation Pills for the 4 Concepts -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="concept-tabs">
+      <button onclick="switchTab('concept1')" id="btn-concept1" class="tab-btn p-3 rounded-xl border border-blue-500 bg-blue-50 text-blue-900 text-left font-medium transition-all shadow-sm">
+        <div class="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-0.5">Concept 1</div>
+        <div class="text-sm font-bold flex items-center gap-1.5">🫀 Interactive Organ Map</div>
+      </button>
+      <button onclick="switchTab('concept2')" id="btn-concept2" class="tab-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 text-left font-medium hover:bg-slate-50 transition-all">
+        <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Concept 2</div>
+        <div class="text-sm font-bold flex items-center gap-1.5">⚡ "What-If" Health Simulator</div>
+      </button>
+      <button onclick="switchTab('concept3')" id="btn-concept3" class="tab-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 text-left font-medium hover:bg-slate-50 transition-all">
+        <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Concept 3</div>
+        <div class="text-sm font-bold flex items-center gap-1.5">🎯 Multi-Organ Risk Radar</div>
+      </button>
+      <button onclick="switchTab('concept4')" id="btn-concept4" class="tab-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-600 text-left font-medium hover:bg-slate-50 transition-all">
+        <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Concept 4</div>
+        <div class="text-sm font-bold flex items-center gap-1.5">🤝 4-Model Consensus Gauge</div>
+      </button>
+    </div>
+
+    <!-- CONCEPT 1: INTERACTIVE ORGAN MAP -->
+    <div id="concept1" class="concept-panel space-y-4">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Concept 1: Interactive Anatomical Organ Map</h2>
+            <p class="text-xs text-slate-500">Eliminates dry tables by replacing traditional forms with an intuitive visual body avatar.</p>
+          </div>
+          <span class="px-2.5 py-1 text-xs font-semibold bg-indigo-50 text-indigo-700 rounded-lg">High Visual Engagement</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <!-- Visual Avatar with Interactive Hotspots -->
+          <div class="bg-slate-100 rounded-2xl p-6 flex flex-col items-center justify-center relative min-h-[340px] border border-slate-200">
+            <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">Click an organ region</div>
+
+            <!-- Body Silhouette Mockup -->
+            <div class="relative w-48 h-64 bg-slate-200 rounded-full flex flex-col items-center justify-center p-4">
+              <!-- Organ 1: Heart -->
+              <button onclick="selectOrgan('Heart')" class="organ-hover absolute top-12 left-16 bg-red-500 hover:bg-red-600 text-white rounded-full p-2.5 shadow-lg border-2 border-white focus:ring-4 focus:ring-red-200 flex items-center gap-1 text-xs font-bold">
+                🫀 Heart <span class="bg-red-700 px-1.5 py-0.5 rounded text-[10px]">72% Risk</span>
+              </button>
+
+              <!-- Organ 2: Pancreas / Metabolism -->
+              <button onclick="selectOrgan('Diabetes')" class="organ-hover absolute top-28 right-8 bg-amber-500 hover:bg-amber-600 text-white rounded-full p-2.5 shadow-lg border-2 border-white focus:ring-4 focus:ring-amber-200 flex items-center gap-1 text-xs font-bold">
+                🩸 Metabolic <span class="bg-amber-700 px-1.5 py-0.5 rounded text-[10px]">48% Risk</span>
+              </button>
+
+              <!-- Organ 3: Cellular / Oncology -->
+              <button onclick="selectOrgan('Breast Cancer')" class="organ-hover absolute bottom-12 left-12 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-2.5 shadow-lg border-2 border-white focus:ring-4 focus:ring-emerald-200 flex items-center gap-1 text-xs font-bold">
+                🔬 Cellular <span class="bg-emerald-700 px-1.5 py-0.5 rounded text-[10px]">12% Risk</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Biomarker Panel on the right -->
+          <div class="md:col-span-2 space-y-4">
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-sm font-bold text-slate-900" id="selected-organ-title">🫀 Cardiovascular Focus Panel</span>
+                <span class="text-xs px-2 py-0.5 rounded-full font-bold bg-red-100 text-red-800" id="selected-organ-badge">High Risk Tier</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                  <div class="text-slate-400">Resting Blood Pressure</div>
+                  <div class="text-base font-bold text-slate-800 mt-1">165 mmHg <span class="text-red-500 text-xs font-semibold">↑ High</span></div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-red-500 h-full w-[80%]"></div>
+                  </div>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                  <div class="text-slate-400">Serum Cholesterol</div>
+                  <div class="text-base font-bold text-slate-800 mt-1">245 mg/dL <span class="text-amber-500 text-xs font-semibold">Elevated</span></div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-amber-500 h-full w-[65%]"></div>
+                  </div>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                  <div class="text-slate-400">CRP Inflammatory Level</div>
+                  <div class="text-base font-bold text-slate-800 mt-1">8.4 mg/L <span class="text-red-500 text-xs font-semibold">Active</span></div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-red-500 h-full w-[75%]"></div>
+                  </div>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                  <div class="text-slate-400">Daily Exercise Habit</div>
+                  <div class="text-base font-bold text-slate-800 mt-1">Low (Sedentary)</div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-blue-500 h-full w-[25%]"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recommendation Card -->
+              <div class="mt-4 bg-red-50 border border-red-100 rounded-lg p-3 flex items-start gap-2 text-xs text-red-900">
+                <span class="text-base">⚠️</span>
+                <div>
+                  <span class="font-bold">Clinical Flag:</span> Systolic blood pressure and C-Reactive Protein represent the top two positive Shapley attributions elevating overall cardiovascular vulnerability.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT 2: WHAT-IF HEALTH SIMULATOR -->
+    <div id="concept2" class="concept-panel hidden space-y-4">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Concept 2: The "What-If" Counterfactual Health Simulator</h2>
+            <p class="text-xs text-slate-500">Empowers patients and clinicians by simulating how lifestyle or medication changes directly lower disease risk.</p>
+          </div>
+          <span class="px-2.5 py-1 text-xs font-semibold bg-emerald-50 text-emerald-700 rounded-lg">Actionable Agency</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Interactive Slider Controls -->
+          <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <div class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Adjust Modifiable Biomarkers</div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>Fasting Glucose (mg/dL)</span>
+                <span id="val-glucose" class="text-blue-600 font-bold">160 mg/dL</span>
+              </div>
+              <input type="range" min="80" max="220" value="160" id="slider-glucose" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>Healthy (<100)</span>
+                <span>Prediabetes (100-125)</span>
+                <span>Diabetic (126+)</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>Body Mass Index (BMI)</span>
+                <span id="val-bmi" class="text-blue-600 font-bold">34.0 kg/m²</span>
+              </div>
+              <input type="range" min="18" max="45" value="34" id="slider-bmi" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>Normal (18.5-24.9)</span>
+                <span>Overweight (25-29.9)</span>
+                <span>Obese (30+)</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                <span>Physical Activity</span>
+                <span id="val-exercise" class="text-blue-600 font-bold">Sedentary</span>
+              </div>
+              <input type="range" min="1" max="3" value="1" id="slider-exercise" oninput="updateSimulator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+              <div class="flex justify-between text-[10px] text-slate-400 mt-0.5">
+                <span>Sedentary</span>
+                <span>Moderate (3x/wk)</span>
+                <span>High (Daily)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-Time Risk Simulation Result -->
+          <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-xl p-6 flex flex-col justify-between">
+            <div>
+              <div class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Real-Time Risk Projection</div>
+              <div class="mt-4 flex items-baseline gap-3">
+                <span class="text-5xl font-black tracking-tight" id="simulated-prob">78.5%</span>
+                <span class="text-sm font-bold text-red-400" id="simulated-tier">HIGH RISK</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-2" id="simulated-explanation">
+                Current biomarker profile yields an elevated risk. Adjust the sliders on the left to observe counterfactual risk drops.
+              </p>
+            </div>
+
+            <!-- Impact Delta Pill -->
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 mt-6 flex items-center justify-between text-xs">
+              <div>
+                <div class="text-slate-400 text-[10px]">Potential Risk Reduction</div>
+                <div class="text-emerald-400 font-bold text-sm" id="delta-risk">- 36.4% Drop Possible</div>
+              </div>
+              <span class="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full text-xs font-bold border border-emerald-500/30">Target: Low Risk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT 3: MULTI-ORGAN RISK RADAR -->
+    <div id="concept3" class="concept-panel hidden space-y-4">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Concept 3: Comprehensive Multi-Organ Health Radar</h2>
+            <p class="text-xs text-slate-500">Gives clinicians an executive bird's-eye view of all three diseases on a single cohesive canvas.</p>
+          </div>
+          <span class="px-2.5 py-1 text-xs font-semibold bg-purple-50 text-purple-700 rounded-lg">Holistic Screening</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Card 1: Cardiovascular -->
+          <div class="p-5 rounded-xl border border-red-200 bg-red-50/50 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-bold text-slate-800">Cardiovascular</span>
+                <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800">Priority 1</span>
+              </div>
+              <div class="text-3xl font-black text-red-600 mt-1">72.0%</div>
+              <div class="text-xs text-slate-500 mt-1">Champion Model: SVM (RBF)</div>
+              <div class="text-xs text-slate-600 mt-3 space-y-1">
+                <div>• Blood Pressure: 165 mmHg</div>
+                <div>• CRP: 8.4 mg/L</div>
+              </div>
+            </div>
+            <button class="mt-4 text-xs font-bold py-1.5 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">View Full Workup</button>
+          </div>
+
+          <!-- Card 2: Metabolic / Diabetes -->
+          <div class="p-5 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-bold text-slate-800">Type-2 Diabetes</span>
+                <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">Monitor</span>
+              </div>
+              <div class="text-3xl font-black text-amber-600 mt-1">48.2%</div>
+              <div class="text-xs text-slate-500 mt-1">Champion Model: XGBoost</div>
+              <div class="text-xs text-slate-600 mt-3 space-y-1">
+                <div>• Glucose: 118 mg/dL</div>
+                <div>• BMI: 28.5 kg/m²</div>
+              </div>
+            </div>
+            <button class="mt-4 text-xs font-bold py-1.5 px-3 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition">View Full Workup</button>
+          </div>
+
+          <!-- Card 3: Breast Cancer -->
+          <div class="p-5 rounded-xl border border-emerald-200 bg-emerald-50/50 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-bold text-slate-800">Breast Cytology</span>
+                <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Benign</span>
+              </div>
+              <div class="text-3xl font-black text-emerald-600 mt-1">4.8%</div>
+              <div class="text-xs text-slate-500 mt-1">Champion: Logistic Reg (99.1% Acc)</div>
+              <div class="text-xs text-slate-600 mt-3 space-y-1">
+                <div>• Mean Concave Pts: 0.018</div>
+                <div>• Mean Radius: 11.2 μm</div>
+              </div>
+            </div>
+            <button class="mt-4 text-xs font-bold py-1.5 px-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition">View Full Workup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT 4: 4-MODEL CONSENSUS GAUGE -->
+    <div id="concept4" class="concept-panel hidden space-y-4">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900">Concept 4: Multi-Model Consensus & Confidence Dashboard</h2>
+            <p class="text-xs text-slate-500">Establishes clinical trust by displaying agreement levels across all 4 machine learning models.</p>
+          </div>
+          <span class="px-2.5 py-1 text-xs font-semibold bg-cyan-50 text-cyan-700 rounded-lg">Clinical Trust & Auditing</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-center">
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+            <div class="text-xs font-semibold text-slate-500">Logistic Regression</div>
+            <div class="text-xl font-bold text-slate-800 mt-1">76.4%</div>
+            <span class="inline-block mt-2 px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-800">High Risk</span>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+            <div class="text-xs font-semibold text-slate-500">Support Vector Machine</div>
+            <div class="text-xl font-bold text-slate-800 mt-1">74.2%</div>
+            <span class="inline-block mt-2 px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-800">High Risk</span>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
+            <div class="text-xs font-semibold text-slate-500">Random Forest</div>
+            <div class="text-xl font-bold text-slate-800 mt-1">71.0%</div>
+            <span class="inline-block mt-2 px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-800">High Risk</span>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+            <div class="text-xs font-bold text-blue-700">XGBoost (Champion)</div>
+            <div class="text-xl font-black text-blue-900 mt-1">81.5%</div>
+            <span class="inline-block mt-2 px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-800">High Risk</span>
+          </div>
+        </div>
+
+        <!-- Consensus Bar -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mt-4 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🤝</span>
+            <div>
+              <span class="font-bold text-slate-800">4 / 4 Models in Agreement (100% Consensus)</span>
+              <p class="text-slate-500">All four classifiers independently flag elevated risk based on patient biomarkers.</p>
+            </div>
+          </div>
+          <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-lg text-xs">Strong Clinical Confidence</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.concept-panel').forEach(el => el.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-blue-500', 'bg-blue-50', 'text-blue-900');
+        btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
+      });
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
+      activeBtn.classList.add('border-blue-500', 'bg-blue-50', 'text-blue-900');
+    }
+
+    function selectOrgan(organ) {
+      const titleEl = document.getElementById('selected-organ-title');
+      const badgeEl = document.getElementById('selected-organ-badge');
+      if (organ === 'Heart') {
+        titleEl.textContent = '🫀 Cardiovascular Focus Panel';
+        badgeEl.textContent = 'High Risk Tier (72%)';
+        badgeEl.className = 'text-xs px-2 py-0.5 rounded-full font-bold bg-red-100 text-red-800';
+      } else if (organ === 'Diabetes') {
+        titleEl.textContent = '🩸 Metabolic & Glycemic Panel';
+        badgeEl.textContent = 'Moderate Risk (48%)';
+        badgeEl.className = 'text-xs px-2 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800';
+      } else {
+        titleEl.textContent = '🔬 Cellular & Cytology Panel';
+        badgeEl.textContent = 'Low Risk / Benign (12%)';
+        badgeEl.className = 'text-xs px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800';
+      }
+    }
+
+    function updateSimulator() {
+      const g = parseInt(document.getElementById('slider-glucose').value);
+      const b = parseInt(document.getElementById('slider-bmi').value);
+      const e = parseInt(document.getElementById('slider-exercise').value);
+
+      document.getElementById('val-glucose').textContent = g + ' mg/dL';
+      document.getElementById('val-bmi').textContent = b + ' kg/m²';
+      document.getElementById('val-exercise').textContent = e === 1 ? 'Sedentary' : (e === 2 ? 'Moderate' : 'High');
+
+      // Simple heuristic formula for visual demonstration
+      let prob = (g - 80) * 0.45 + (b - 18) * 1.4 - (e - 1) * 12;
+      prob = Math.max(8.0, Math.min(94.0, prob));
+
+      const probEl = document.getElementById('simulated-prob');
+      const tierEl = document.getElementById('simulated-tier');
+      probEl.textContent = prob.toFixed(1) + '%';
+
+      if (prob < 35) {
+        tierEl.textContent = 'LOW RISK';
+        tierEl.className = 'text-sm font-bold text-emerald-400';
+      } else if (prob < 65) {
+        tierEl.textContent = 'MODERATE RISK';
+        tierEl.className = 'text-sm font-bold text-amber-400';
+      } else {
+        tierEl.textContent = 'HIGH RISK';
+        tierEl.className = 'text-sm font-bold text-red-400';
+      }
+    }
+  </script>
+</body>
+</html>

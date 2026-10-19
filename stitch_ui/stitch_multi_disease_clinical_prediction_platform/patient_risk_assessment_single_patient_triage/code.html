@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#0047bf", "secondary-container": "#5bb8fe", "surface-bright": "#f8f9ff", "tertiary-fixed-dim": "#b4c5ff", "surface-variant": "#d3e4fe", "tertiary-fixed": "#dbe1ff", "inverse-surface": "#213145", "error-container": "#ffdad6", "primary-fixed": "#9cf2e8", "surface-container-high": "#dce9ff", "surface": "#f8f9ff", "secondary-fixed-dim": "#93ccff", "surface-container-lowest": "#ffffff", "inverse-primary": "#80d5cb", "error": "#ba1a1a", "on-primary-fixed": "#00201d", "on-secondary-fixed": "#001d31", "tertiary-container": "#1e5fe7", "inverse-on-surface": "#eaf1ff", "on-secondary-container": "#00476e", "surface-container-highest": "#d3e4fe", "secondary": "#006398", "on-error": "#ffffff", "surface-container": "#e5eeff", "on-tertiary-fixed-variant": "#003ea8", "on-primary": "#ffffff", "on-tertiary-container": "#e6e9ff", "on-error-container": "#93000a", "primary-fixed-dim": "#80d5cb", "on-tertiary-fixed": "#00174b", "on-primary-container": "#a3faef", "outline-variant": "#bdc9c6", "on-primary-fixed-variant": "#00504a", "on-surface-variant": "#3e4947", "on-background": "#0b1c30", "secondary-fixed": "#cce5ff", "primary": "#005c55", "on-secondary": "#ffffff", "surface-tint": "#006a63", "outline": "#6e7977", "on-surface": "#0b1c30", "surface-container-low": "#eff4ff", "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#004b73", "surface-dim": "#cbdbf5", "background": "#f8f9ff", "primary-container": "#0f766e" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.25rem", "margin-mobile": "0.75rem", "space-md": "0.75rem", "margin": "1.5rem", "gutter-mobile": "0.75rem", "space-xl": "1.75rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter": "1rem" }, "fontFamily": { "label-numeric-sm": [ "JetBrains Mono" ], "headline-lg-mobile": [ "Inter" ], "label-numeric-md": [ "JetBrains Mono" ], "body-md": [ "Inter" ], "headline-sm": [ "Inter" ], "label-numeric-lg": [ "JetBrains Mono" ], "title-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-lg": [ "Inter" ], "body-sm": [ "Inter" ], "label-status": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "label-numeric-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0", "fontWeight": "500" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "label-numeric-md": [ "14px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "body-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "label-numeric-lg": [ "24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "title-md": [ "15px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "600" } ], "headline-md": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "15px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "label-status": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" } ], "headline-lg": [ "30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-[#e2e8f0] shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]"><div class="h-16 w-full px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md min-w-0"><img alt="Multi-Disease Platform Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XhYe26O1dud-DmWn95WffXvuNnNJ7B7tmls5Upv4BqwjA9CsCuBh12lAUUmrIxw-c_NLmOhTIjcWEzkT6UDl3uMA-Jg6o0tpMKMxtETSR74iKJ4KMidZ0kUp51vhSbOxUBosh26juc5fzimeOP3Z7y-y0WV7R_kihydJ1vfdaBObR4I8gjd0jpru7e551lQOv8A_Fox-AOi8yfzCMW--OZAqT1HSU36srclkVO5z5D544SklFZn1SVYniX"/><div class="flex flex-col truncate"><span class="font-headline-sm text-headline-sm text-on-surface truncate tracking-tight">🩺 Multi-Disease Prediction Platform</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Predictive Clinical Risk Assessment powered by Logistic Regression, SVM, Random Forest, and XGBoost</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 bg-[#ecfdf5] border border-[#a7f3d0] rounded-full"><span class="w-2 h-2 rounded-full bg-[#059669]"></span><span class="font-label-status text-label-status uppercase text-[#065f46]">ML Engine v4.2 Active</span></div><div class="hidden lg:flex items-center px-space-sm py-1 bg-surface-container-low border border-[#e2e8f0] rounded-full"><span class="font-label-status text-label-status uppercase text-secondary font-semibold">5-Fold Stratified CV</span></div><div class="flex items-center gap-space-sm pl-space-sm border-l border-[#e2e8f0]"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-[#cbd5e1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmOX8LRuV9IV52FXA8xyFkzob8dEPoTvTiqM4gxbMA0auH0jbFOGQLDxuBrbtgVAhiBdWDKMZcU3X6oNC0XWLIyrUC7nGKJNf-gqOpx1Jm6KIgBAl9Ih8ErlbmQGnVqfz0fMm7_nK7jEr4vGaiRfrhq0xMwzSj2Nn6CFdBmK2kFhvFM98s2FJqXrt7JvDMrtwHueYg4vGKmjal-4qj7qaayF3m8zoGxNOTpUm8xCdGfLCDGYH9Z8m9xA"/><div class="hidden md:flex flex-col text-right"><span class="font-title-md text-body-sm text-on-surface leading-tight font-semibold">Dr. S. Khan, MD</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Clinical Informatics</span></div></div></div></div><nav class="w-full bg-surface-container-lowest border-t border-[#f1f5f9] px-margin flex items-center gap-space-xs overflow-x-auto h-11" data-active-classes="bg-primary text-on-primary font-semibold"><a aria-current="page" class="px-space-md py-1.5 rounded-lg transition-colors whitespace-nowrap bg-primary text-on-primary font-semibold" data-path="patient-risk-assessment" href="#">Patient Risk Assessment</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors whitespace-nowrap" data-path="batch-screening" href="#">Batch Screening</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors whitespace-nowrap" data-path="model-benchmarks-and-metrics" href="#">Model Benchmarks &amp; Metrics</a><a class="px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors whitespace-nowrap" data-path="dataset-explorer" href="#">Dataset Explorer</a></nav></header><aside class="fixed left-0 top-27 bottom-0 w-72 bg-surface-container-lowest border-r border-[#e2e8f0] z-40 overflow-y-auto p-space-md flex flex-col gap-space-md shadow-[0_1px_3px_0_rgba(15,23,42,0.02)]"><div class="flex items-center gap-space-xs pb-space-sm border-b border-[#f1f5f9]"><span class="material-symbols-outlined text-primary text-xl">tune</span><span class="font-title-md text-title-md text-on-surface">Diagnostic Control Center</span></div><div class="flex flex-col gap-space-xs"><label class="font-label-status text-label-status uppercase text-on-surface-variant font-semibold tracking-wider">Target Disease Cohort</label><div class="flex flex-col gap-1.5"><div class="p-space-sm rounded-lg border-2 border-primary bg-surface-container-low cursor-pointer"><div class="flex items-center justify-between"><span class="font-body-md text-body-md font-semibold text-on-surface">🫀 Heart Disease</span><span class="font-label-status text-label-status text-primary font-bold">ACTIVE</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Cardiovascular: 10,000 records, 20 markers</p></div><div class="p-space-sm rounded-lg border border-[#e2e8f0] hover:bg-surface-container-low cursor-pointer transition-colors"><div class="flex items-center justify-between"><span class="font-body-md text-body-md text-on-surface">🩸 Diabetes</span><span class="font-label-status text-label-status text-on-surface-variant">UCI 768</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pima Indians: 8 biomarkers</p></div><div class="p-space-sm rounded-lg border border-[#e2e8f0] hover:bg-surface-container-low cursor-pointer transition-colors"><div class="flex items-center justify-between"><span class="font-body-md text-body-md text-on-surface">🔬 Breast Cancer</span><span class="font-label-status text-label-status text-on-surface-variant">WDBC 569</span></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Wisconsin Diagnostic: 30 nuclear metrics</p></div></div></div><div class="flex flex-col gap-space-xs"><label class="font-label-status text-label-status uppercase text-on-surface-variant font-semibold tracking-wider">Active Classifier Algorithm</label><div class="flex flex-col gap-1"><div class="flex items-center justify-between px-space-sm py-1.5 rounded-lg bg-surface-container-low border border-primary text-primary font-semibold font-body-sm text-body-sm"><span class="flex items-center gap-1.5">🏆 Champion (Auto SVM)</span><span class="material-symbols-outlined text-base">check_circle</span></div><div class="flex items-center justify-between px-space-sm py-1.5 rounded-lg hover:bg-surface-container-low border border-transparent text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm cursor-pointer"><span>Logistic Regression</span></div><div class="flex items-center justify-between px-space-sm py-1.5 rounded-lg hover:bg-surface-container-low border border-transparent text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm cursor-pointer"><span>Support Vector Machine</span></div><div class="flex items-center justify-between px-space-sm py-1.5 rounded-lg hover:bg-surface-container-low border border-transparent text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm cursor-pointer"><span>Random Forest</span></div><div class="flex items-center justify-between px-space-sm py-1.5 rounded-lg hover:bg-surface-container-low border border-transparent text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm cursor-pointer"><span>XGBoost Gradient Boosted</span></div></div></div><div class="mt-auto p-space-sm bg-surface-container-low rounded-lg border border-[#cbd5e1] flex flex-col gap-space-xs"><div class="flex items-center gap-1 text-primary font-title-md text-body-sm"><span class="material-symbols-outlined text-base">verified</span>Clinical Protocol Spec</div><div class="font-body-sm text-body-sm text-on-surface-variant space-y-1"><p><span class="font-semibold text-on-surface">Domain:</span> Cardiovascular (10k)</p><p><span class="font-semibold text-on-surface">Model:</span> SVM Calibrated (RBF)</p><p><span class="font-semibold text-on-surface">Validation:</span> 5-Fold Stratified CV</p><p><span class="font-semibold text-on-surface">Validation ROC-AUC:</span> <span class="font-label-numeric-sm text-label-numeric-sm text-primary font-bold">0.942</span></p></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-27 pb-16 px-margin bg-background"><div class="flex flex-col w-full gap-space-lg">
+<!-- Feedback Toast Notification Container -->
+<div class="hidden transition-all duration-300 ease-out px-space-md py-2.5 rounded-lg bg-surface-container-low shadow-md flex items-center justify-between" id="toast-banner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-xl" id="toast-icon">check_circle</span>
+<span class="font-body-md text-body-md font-medium text-on-surface" id="toast-message">Diagnostic preset applied successfully.</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface flex items-center" onclick="dismissToast()">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<!-- Top Action Toolbar -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<!-- Presets and Controls -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="font-label-status text-label-status uppercase text-on-surface-variant mr-1">One-Click Presets:</span>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container text-body-sm font-body-sm font-semibold flex items-center gap-1.5 transition-colors shadow-sm" id="btn-load-healthy">
+<span class="material-symbols-outlined text-primary text-base">favorite</span>
+<span>⚡ Load Healthy Preset</span>
+</button>
+<button class="px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-opacity-80 text-body-sm font-body-sm font-semibold flex items-center gap-1.5 transition-colors shadow-sm" id="btn-load-high-risk">
+<span class="material-symbols-outlined text-error text-base">warning</span>
+<span>⚠️ Load High-Risk Preset</span>
+</button>
+</div>
+<!-- Patient Context Metadata Badges -->
+<div class="flex flex-wrap items-center gap-space-sm ml-auto">
+<div class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container rounded-lg font-label-numeric-sm text-label-numeric-sm text-on-surface font-medium">
+<span class="material-symbols-outlined text-base text-secondary">badge</span>
+<span>Patient MRN: <strong class="font-bold text-on-surface">#PT-89421-C</strong> | Triage Rm 3B | Admitted: Today 08:30</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 bg-surface-container-high rounded-full font-label-status text-label-status uppercase text-secondary font-semibold">
+<span>🫀 Active Cohort: Heart Disease (20 Biomarkers)</span>
+</div>
+</div>
+</section>
+<!-- 3-Column Structured Clinical Input Form -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Column 1: Vitals -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-xl">vital_signs</span>
+<h2 class="font-title-md text-title-md text-on-surface">Column 1: Baseline Vitals</h2>
+</div>
+<span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant font-medium">5 Parameters</span>
+</div>
+<!-- Age Input with Slider -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Age (years)</label>
+<span class="font-label-numeric-md text-label-numeric-md text-primary font-bold" id="disp-age">62 yrs</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<input class="w-full accent-primary h-1.5 bg-surface-container rounded-lg cursor-pointer" id="input-age" max="100" min="18" type="range" value="62"/>
+<input class="w-16 px-2 py-1 text-right font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="input-age-num" max="100" min="18" type="number" value="62"/>
+</div>
+</div>
+<!-- Gender Toggle -->
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Biological Sex</label>
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-lg gap-1">
+<button class="py-1 px-3 rounded-lg text-body-sm font-body-sm font-semibold text-center bg-primary text-on-primary shadow-sm transition-all" id="gender-male" type="button">Male</button>
+<button class="py-1 px-3 rounded-lg text-body-sm font-body-sm font-semibold text-center text-on-surface-variant hover:text-on-surface transition-all" id="gender-female" type="button">Female</button>
+</div>
+</div>
+<!-- Resting BP -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Resting Blood Pressure</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold" id="badge-bp">Elevated Stage 1</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-bp" type="number" value="158"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">mmHg</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Standard target: &lt; 120 mmHg</span>
+</div>
+<!-- Serum Cholesterol -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Serum Total Cholesterol</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-surface-container-high text-secondary font-semibold" id="badge-chol">Borderline High</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-chol" type="number" value="268"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">mg/dL</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Desirable threshold: &lt; 200 mg/dL</span>
+</div>
+<!-- BMI -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Body Mass Index (BMI)</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold" id="badge-bmi">Obese Cl. I</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-bmi" step="0.1" type="number" value="31.4"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">kg/m²</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Normal physiological range: 18.5 – 24.9</span>
+</div>
+</div>
+<!-- Column 2: Biomarkers & Lab Chemistry -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-xl">biotech</span>
+<h2 class="font-title-md text-title-md text-on-surface">Column 2: Serum Biomarkers</h2>
+</div>
+<span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant font-medium">5 Parameters</span>
+</div>
+<!-- Sleep Duration -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Sleep Duration</label>
+<span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">Sub-optimal (&lt;7h)</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-sleep" step="0.5" type="number" value="5.5"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">hrs/night</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Normal restorative rest: 7.0 – 9.0 hrs</span>
+</div>
+<!-- Triglycerides -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Triglycerides</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold" id="badge-trig">High (&gt;200)</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-trig" type="number" value="235"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">mg/dL</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Optimal fasting: &lt; 150 mg/dL</span>
+</div>
+<!-- Fasting Blood Sugar -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Fasting Blood Sugar (FBS)</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold" id="badge-fbs">&gt;126 Pre-diabetic</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-fbs" type="number" value="142"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">mg/dL</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Normal baseline fasting: 70 – 99 mg/dL</span>
+</div>
+<!-- CRP Inflammatory -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">High-Sensitivity CRP</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error text-on-error font-semibold" id="badge-crp">High Risk (&gt;3.0)</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-crp" step="0.1" type="number" value="4.8"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">mg/L</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Systemic inflammation marker (&lt; 1.0 mg/L low risk)</span>
+</div>
+<!-- Homocysteine -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Plasma Homocysteine</label>
+<span class="px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold" id="badge-homo">Elevated</span>
+</div>
+<div class="relative">
+<input class="w-full px-space-sm py-1.5 font-label-numeric-md text-label-numeric-md bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary pr-14" id="input-homo" step="0.1" type="number" value="18.2"/>
+<span class="absolute right-3 top-2 font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">μmol/L</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vascular damage indicator (Target &lt; 15.0 μmol/L)</span>
+</div>
+</div>
+<!-- Column 3: Lifestyle & Clinical History -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-xl">history_edu</span>
+<h2 class="font-title-md text-title-md text-on-surface">Column 3: History &amp; Lifestyle</h2>
+</div>
+<span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant font-medium">10 Indicators</span>
+</div>
+<!-- Dropdown Selects -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Exercise Habits</label>
+<select class="px-2.5 py-1.5 font-body-sm text-body-sm bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sel-exercise">
+<option selected="" value="sedentary">Sedentary / Low</option>
+<option value="moderate">Moderate (3x/wk)</option>
+<option value="active">Active Athlete</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Alcohol Intake</label>
+<select class="px-2.5 py-1.5 font-body-sm text-body-sm bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sel-alcohol">
+<option value="none">None / Abstinent</option>
+<option selected="" value="moderate">Moderate Intake</option>
+<option value="heavy">Frequent / High</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Stress Level</label>
+<select class="px-2.5 py-1.5 font-body-sm text-body-sm bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sel-stress">
+<option value="low">Low Work Stress</option>
+<option value="moderate">Moderate Stress</option>
+<option selected="" value="high">Chronic / High</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm text-on-surface font-semibold">Dietary Sugars</label>
+<select class="px-2.5 py-1.5 font-body-sm text-body-sm bg-surface-container-low text-on-surface rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" id="sel-sugar">
+<option value="low">Controlled / Low</option>
+<option value="moderate">Moderate Intake</option>
+<option selected="" value="high">Refined Sugar High</option>
+</select>
+</div>
+</div>
+<!-- Interactive Diagnostic Toggles Grid -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-label-status text-label-status uppercase text-on-surface-variant font-semibold">Diagnostic Anamnesis Switches</span>
+<!-- Active Smoker Toggle -->
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<span class="font-body-sm text-body-sm text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-on-surface-variant">smoking_rooms</span>
+            Smoking History: Active Smoker
+          </span>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="toggle-smoking" type="checkbox"/>
+</label>
+<!-- Family History -->
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<span class="font-body-sm text-body-sm text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-on-surface-variant">family_history</span>
+            Family CAD (1st Degree Relative)
+          </span>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="toggle-family" type="checkbox"/>
+</label>
+<!-- Diagnosed Diabetes -->
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<span class="font-body-sm text-body-sm text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-on-surface-variant">bloodtype</span>
+            Confirmed Type 2 Diabetes
+          </span>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="toggle-diabetes" type="checkbox"/>
+</label>
+<!-- History of High BP -->
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<span class="font-body-sm text-body-sm text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-on-surface-variant">speed</span>
+            History of Chronic Hypertension
+          </span>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="toggle-hbp" type="checkbox"/>
+</label>
+<!-- Low HDL -->
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<span class="font-body-sm text-body-sm text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-on-surface-variant">trending_down</span>
+            Low Protective HDL (&lt;40 mg/dL)
+          </span>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="toggle-hdl" type="checkbox"/>
+</label>
+<!-- High LDL -->
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<span class="font-body-sm text-body-sm text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-on-surface-variant">trending_up</span>
+            High Atherogenic LDL (&gt;160 mg/dL)
+          </span>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" id="toggle-ldl" type="checkbox"/>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 3: Prominent Diagnostic Execution Button -->
+<section class="w-full">
+<button class="w-full group py-4 px-space-lg rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm tracking-wide shadow-md hover:bg-primary-container active:scale-[0.99] transition-all flex flex-col sm:flex-row items-center justify-center gap-space-sm relative overflow-hidden" id="btn-run-assessment">
+<div class="flex items-center gap-space-sm">
+<span class="relative flex h-3.5 w-3.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary-fixed"></span>
+</span>
+<span class="material-symbols-outlined text-2xl">bolt</span>
+<span class="font-bold">RUN DIAGNOSTIC RISK ASSESSMENT</span>
+</div>
+<div class="sm:ml-auto px-space-sm py-1 bg-surface-container-lowest/15 backdrop-blur-sm rounded-lg font-label-numeric-sm text-label-numeric-sm text-primary-fixed">
+<span>SVM (RBF Kernel Calibrated) | 5-Fold Stratified CV</span>
+</div>
+</button>
+</section>
+<!-- Section 4: Diagnostic Outcome & Explainable AI Grid (Balanced 50/50 Columns) -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-stretch">
+<!-- LEFT COLUMN: Risk Outcome & Interactive Semicircular Gauge -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col justify-between gap-space-md">
+<!-- Card Header -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-xl">analytics</span>
+<h2 class="font-title-md text-title-md text-on-surface">Predictive Risk Stratification</h2>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-error-container text-on-error-container font-label-status text-label-status uppercase font-bold" id="risk-status-pill">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>HIGH RISK (78.4% Probability)</span>
+</div>
+</div>
+<!-- Semicircular Needle Gauge Meter -->
+<div class="flex flex-col items-center justify-center relative pt-2">
+<div class="relative w-72 h-36 overflow-hidden flex items-end justify-center">
+<!-- Gauge Arc SVG -->
+<svg class="w-72 h-72 transform -rotate-180 origin-center" viewbox="0 0 200 200">
+<!-- Background Full Arc -->
+<circle cx="100" cy="100" fill="none" r="80" stroke="#d3e4fe" stroke-dasharray="251.32" stroke-dashoffset="0" stroke-linecap="round" stroke-width="18"></circle>
+<!-- Low Risk Zone (0% - 35%): ~88 units -->
+<circle class="opacity-90" cx="100" cy="100" fill="none" r="80" stroke="#005c55" stroke-dasharray="88 251.32" stroke-dashoffset="0" stroke-linecap="butt" stroke-width="18"></circle>
+<!-- Moderate Risk Zone (35% - 65%): ~75 units -->
+<circle class="opacity-80" cx="100" cy="100" fill="none" r="80" stroke="#006398" stroke-dasharray="75 251.32" stroke-dashoffset="-88" stroke-linecap="butt" stroke-width="18"></circle>
+<!-- High Risk Zone (65% - 100%): ~88 units -->
+<circle class="opacity-90" cx="100" cy="100" fill="none" r="80" stroke="#ba1a1a" stroke-dasharray="88 251.32" stroke-dashoffset="-163" stroke-linecap="butt" stroke-width="18"></circle>
+</svg>
+<!-- Gauge Needle (78.4% mapped to ~-39 deg from center horizontal) -->
+<!-- 0% = -90deg, 100% = +90deg -> 78.4% = -90 + (180 * 0.784) = +51.12deg -->
+<div class="absolute bottom-0 left-1/2 w-1 h-28 bg-on-surface origin-bottom transform rotate-[51.1deg] transition-transform duration-700 ease-out shadow-sm rounded-t-full" id="gauge-needle">
+<div class="w-3 h-3 rounded-full bg-error -top-1.5 -left-1 absolute ring-2 ring-surface-container-lowest"></div>
+</div>
+<div class="absolute bottom-0 w-6 h-6 rounded-full bg-on-surface shadow-md"></div>
+</div>
+<!-- Metric Display Under Gauge -->
+<div class="text-center mt-2 flex flex-col items-center">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface" id="risk-score-value">78.4</span>
+<span class="font-title-md text-title-md text-on-surface-variant font-semibold">%</span>
+</div>
+<span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">Clinical Cardiovascular Event Probability (10-Yr)</span>
+</div>
+<!-- Multi-Disease Risk Matrix Progression Strip -->
+<div class="w-full mt-4 flex flex-col gap-1">
+<div class="flex justify-between font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">
+<span>Low Risk (0-35%)</span>
+<span>Borderline (35-65%)</span>
+<span>Critical Elevated (65-100%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden flex">
+<div class="w-[35%] h-full bg-primary"></div>
+<div class="w-[30%] h-full bg-secondary"></div>
+<div class="w-[35%] h-full bg-error"></div>
+</div>
+</div>
+</div>
+<!-- Clinical Action Guidance Alert Box -->
+<div class="p-space-md rounded-xl bg-error-container/40 flex flex-col gap-space-xs shadow-sm" id="clinical-guidance-box">
+<div class="flex items-center gap-1.5 text-error font-title-md text-body-sm font-bold">
+<span class="material-symbols-outlined text-lg">medical_services</span>
+<span>Clinical Directive &amp; Intervention Protocol</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+          ⚠️ <strong>Immediate clinical follow-up and formal diagnostic testing strongly recommended.</strong> Schedule 12-lead ECG, echocardiogram, and cardiology consult within 48–72 hours. Initiate intensive lifestyle modification &amp; high-intensity statin therapy protocol per ACC/AHA guidelines.
+        </p>
+</div>
+<!-- Action Export CTA -->
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-body-sm text-body-sm font-semibold flex items-center justify-between transition-colors shadow-sm" id="btn-download-report">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">download_for_offline</span>
+<span>Download Clinical Diagnostic Report (.md)</span>
+</span>
+<span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">SHA256 • 08:32 EST</span>
+</button>
+</div>
+<!-- RIGHT COLUMN: Explainable AI (SHAP Biomarker Attribution) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col justify-between gap-space-md">
+<!-- Card Header -->
+<div class="flex flex-col gap-0.5 pb-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-xl">insights</span>
+<h2 class="font-title-md text-title-md text-on-surface">Explainable AI (XAI) Attribution</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-numeric-sm text-label-numeric-sm text-on-surface-variant font-medium">TreeSHAP Calibrated</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">SHAP Local Feature Importance (Impact on Prediction Odds)</span>
+</div>
+<!-- Horizontal Attribution Bar Chart Container -->
+<div class="flex flex-col gap-2.5 my-auto">
+<!-- Legend Strip -->
+<div class="flex items-center justify-between text-body-sm font-body-sm pb-1">
+<div class="flex items-center gap-1.5 font-semibold text-error">
+<span class="w-2.5 h-2.5 rounded-sm bg-error"></span>
+<span>Risk-Elevating (+)</span>
+</div>
+<div class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant">Baseline Mean: 0.00</div>
+<div class="flex items-center gap-1.5 font-semibold text-primary">
+<span>Protective (-)</span>
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+</div>
+</div>
+<!-- Feature 1: Resting BP -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Resting Blood Pressure = 158 mmHg</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-error">+0.28</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-1/2 h-full"></div>
+<div class="w-[42%] h-full bg-error rounded-r-full"></div>
+</div>
+</div>
+<!-- Feature 2: Serum Cholesterol -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Serum Cholesterol = 268 mg/dL</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-error">+0.24</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-1/2 h-full"></div>
+<div class="w-[36%] h-full bg-error rounded-r-full"></div>
+</div>
+</div>
+<!-- Feature 3: Fasting Blood Sugar -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Fasting Blood Sugar = 142 mg/dL</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-error">+0.19</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-1/2 h-full"></div>
+<div class="w-[28%] h-full bg-error rounded-r-full"></div>
+</div>
+</div>
+<!-- Feature 4: Active Smoking -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Active Smoking = Yes</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-error">+0.15</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-1/2 h-full"></div>
+<div class="w-[22%] h-full bg-error rounded-r-full"></div>
+</div>
+</div>
+<!-- Feature 5: Age -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Patient Age = 62 yrs</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-error">+0.12</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-1/2 h-full"></div>
+<div class="w-[18%] h-full bg-error rounded-r-full"></div>
+</div>
+</div>
+<!-- Feature 6: CRP Level -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">CRP Inflammatory = 4.8 mg/L</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-error">+0.09</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-1/2 h-full"></div>
+<div class="w-[13%] h-full bg-error rounded-r-full"></div>
+</div>
+</div>
+<!-- Feature 7: Protective Sleep Duration -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Sleep Duration = 5.5 hrs</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-primary">-0.03</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex justify-end">
+<div class="w-[5%] h-full bg-primary rounded-l-full"></div>
+<div class="w-1/2 h-full"></div>
+</div>
+</div>
+<!-- Feature 8: Protective Alcohol Moderation -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm">
+<span class="font-medium text-on-surface">Alcohol Intake = Moderate</span>
+<span class="font-label-numeric-sm text-label-numeric-sm font-bold text-primary">-0.02</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex justify-end">
+<div class="w-[3.5%] h-full bg-primary rounded-l-full"></div>
+<div class="w-1/2 h-full"></div>
+</div>
+</div>
+</div>
+<!-- Summary Takeaway Pill -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-xl">balance</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Net SHAP Contribution</span>
+</div>
+<div class="px-space-md py-1 rounded-full bg-error-container text-on-error-container font-label-numeric-sm text-label-numeric-sm font-bold">
+          Net Push: +0.72 Log-Odds toward Adverse Event
+        </div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Dynamic sync between Age Slider & Number Input
+  const ageSlider = document.getElementById('input-age');
+  const ageNumber = document.getElementById('input-age-num');
+  const ageDisplay = document.getElementById('disp-age');
+
+  function updateAge(val) {
+    ageSlider.value = val;
+    ageNumber.value = val;
+    ageDisplay.textContent = val + ' yrs';
+  }
+
+  ageSlider.addEventListener('input', (e) => updateAge(e.target.value));
+  ageNumber.addEventListener('input', (e) => updateAge(e.target.value));
+
+  // Gender Toggle Logic
+  const btnMale = document.getElementById('gender-male');
+  const btnFemale = document.getElementById('gender-female');
+
+  btnMale.addEventListener('click', () => {
+    btnMale.className = 'py-1 px-3 rounded-lg text-body-sm font-body-sm font-semibold text-center bg-primary text-on-primary shadow-sm transition-all';
+    btnFemale.className = 'py-1 px-3 rounded-lg text-body-sm font-body-sm font-semibold text-center text-on-surface-variant hover:text-on-surface transition-all';
+  });
+
+  btnFemale.addEventListener('click', () => {
+    btnFemale.className = 'py-1 px-3 rounded-lg text-body-sm font-body-sm font-semibold text-center bg-primary text-on-primary shadow-sm transition-all';
+    btnMale.className = 'py-1 px-3 rounded-lg text-body-sm font-body-sm font-semibold text-center text-on-surface-variant hover:text-on-surface transition-all';
+  });
+
+  // Toast Banner helpers
+  const toast = document.getElementById('toast-banner');
+  const toastMsg = document.getElementById('toast-message');
+  const toastIcon = document.getElementById('toast-icon');
+
+  function showToast(message, isAlert) {
+    toastMsg.textContent = message;
+    if (isAlert) {
+      toastIcon.textContent = 'warning';
+      toastIcon.className = 'material-symbols-outlined text-error text-xl';
+    } else {
+      toastIcon.textContent = 'check_circle';
+      toastIcon.className = 'material-symbols-outlined text-primary text-xl';
+    }
+    toast.classList.remove('hidden');
+  }
+
+  function dismissToast() {
+    toast.classList.add('hidden');
+  }
+
+  // Preset 1: Healthy Preset
+  document.getElementById('btn-load-healthy').addEventListener('click', () => {
+    updateAge(38);
+    document.getElementById('input-bp').value = 118;
+    document.getElementById('input-chol').value = 185;
+    document.getElementById('input-bmi').value = 22.4;
+    document.getElementById('input-sleep').value = 7.5;
+    document.getElementById('input-trig').value = 120;
+    document.getElementById('input-fbs').value = 88;
+    document.getElementById('input-crp').value = 0.8;
+    document.getElementById('input-homo').value = 9.4;
+
+    document.getElementById('sel-exercise').value = 'active';
+    document.getElementById('sel-alcohol').value = 'none';
+    document.getElementById('sel-stress').value = 'low';
+    document.getElementById('sel-sugar').value = 'low';
+
+    document.getElementById('toggle-smoking').checked = false;
+    document.getElementById('toggle-family').checked = false;
+    document.getElementById('toggle-diabetes').checked = false;
+    document.getElementById('toggle-hbp').checked = false;
+    document.getElementById('toggle-hdl').checked = false;
+    document.getElementById('toggle-ldl').checked = false;
+
+    // Badges update
+    document.getElementById('badge-bp').textContent = 'Normal';
+    document.getElementById('badge-bp').className = 'px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-primary-fixed text-on-primary-fixed font-semibold';
+    document.getElementById('badge-chol').textContent = 'Optimal';
+    document.getElementById('badge-chol').className = 'px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-primary-fixed text-on-primary-fixed font-semibold';
+    document.getElementById('badge-bmi').textContent = 'Normal Range';
+    document.getElementById('badge-bmi').className = 'px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-primary-fixed text-on-primary-fixed font-semibold';
+
+    showToast('Normal vitals loaded: BP 118/76, Chol 185 mg/dL, FBS 88 mg/dL', false);
+  });
+
+  // Preset 2: High Risk Preset
+  document.getElementById('btn-load-high-risk').addEventListener('click', () => {
+    updateAge(62);
+    document.getElementById('input-bp').value = 158;
+    document.getElementById('input-chol').value = 268;
+    document.getElementById('input-bmi').value = 31.4;
+    document.getElementById('input-sleep').value = 5.5;
+    document.getElementById('input-trig').value = 235;
+    document.getElementById('input-fbs').value = 142;
+    document.getElementById('input-crp').value = 4.8;
+    document.getElementById('input-homo').value = 18.2;
+
+    document.getElementById('sel-exercise').value = 'sedentary';
+    document.getElementById('sel-alcohol').value = 'moderate';
+    document.getElementById('sel-stress').value = 'high';
+    document.getElementById('sel-sugar').value = 'high';
+
+    document.getElementById('toggle-smoking').checked = true;
+    document.getElementById('toggle-family').checked = true;
+    document.getElementById('toggle-diabetes').checked = true;
+    document.getElementById('toggle-hbp').checked = true;
+    document.getElementById('toggle-hdl').checked = true;
+    document.getElementById('toggle-ldl').checked = true;
+
+    // Badges reset
+    document.getElementById('badge-bp').textContent = 'Elevated Stage 1';
+    document.getElementById('badge-bp').className = 'px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold';
+    document.getElementById('badge-chol').textContent = 'Borderline High';
+    document.getElementById('badge-chol').className = 'px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-surface-container-high text-secondary font-semibold';
+    document.getElementById('badge-bmi').textContent = 'Obese Cl. I';
+    document.getElementById('badge-bmi').className = 'px-2 py-0.5 rounded-full text-label-status font-label-status uppercase bg-error-container text-on-error-container font-semibold';
+
+    showToast('Pathological out-of-range clinical markers loaded for high-risk triage testing.', true);
+  });
+
+  // Run Assessment Action Feedback
+  document.getElementById('btn-run-assessment').addEventListener('click', () => {
+    const needle = document.getElementById('gauge-needle');
+    needle.classList.remove('rotate-[51.1deg]');
+    needle.classList.add('-rotate-90');
+    
+    setTimeout(() => {
+      needle.classList.remove('-rotate-90');
+      needle.classList.add('rotate-[51.1deg]');
+      showToast('Diagnostic assessment recomputed with calibrated SVM model. Risk: 78.4%.', false);
+    }, 200);
+  });
+
+  // Report Download Action
+  document.getElementById('btn-download-report').addEventListener('click', () => {
+    const dummyContent = `# CLINICAL RISK ASSESSMENT SUMMARY\\nMRN: #PT-89421-C\\nCohort: Cardiovascular Heart Disease\\nPredicted Risk: 78.4% (High Risk)\\nAttribution: SBP 158 mmHg, Chol 268 mg/dL, FBS 142 mg/dL\\nRecommendation: Cardiology consult within 48-72h.`;
+    const blob = new Blob([dummyContent], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Clinical_Risk_Report_PT-89421-C.md';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Clinical report (.md) downloaded successfully.', false);
+  });
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-[#e2e8f0] py-space-sm px-margin"><div class="flex items-center justify-between gap-space-md text-on-surface-variant"><p class="font-body-sm text-body-sm leading-normal"><span class="font-semibold text-on-surface">Clinical Disclaimer:</span> This application is designed solely for educational, academic, and clinical decision-support research. It is not intended to replace formal professional diagnosis, medical consultation, or clinical judgment by a licensed healthcare practitioner.</p><span class="font-label-numeric-sm text-label-numeric-sm text-on-surface-variant shrink-0">EHR-AI v4.2.1 • HIPAA-Research Compliant</span></div></footer></div></body></html>

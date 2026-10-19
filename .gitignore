@@ -36,7 +36,12 @@ htmlcov/
 .env
 .vscode/
 .idea/
+node_modules/
+carecompanion_ui/node_modules/
+!carecompanion_ui/dist/
+!carecompanion_ui/dist/**
 
 # OS Specific
 .DS_Store
 Thumbs.db
+

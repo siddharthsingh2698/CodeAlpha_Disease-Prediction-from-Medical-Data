@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#6063ee",
+          "surface": "#f7f9fb",
+          "surface-container-lowest": "#ffffff",
+          "secondary-fixed-dim": "#4fdbc8",
+          "on-secondary-container": "#006f64",
+          "surface-container-low": "#f2f4f6",
+          "on-primary": "#ffffff",
+          "tertiary-fixed-dim": "#c0c1ff",
+          "surface-container-high": "#e6e8ea",
+          "on-secondary": "#ffffff",
+          "primary-fixed": "#89f5e7",
+          "surface-tint": "#006a61",
+          "surface-variant": "#e0e3e5",
+          "surface-container": "#eceef0",
+          "secondary": "#006b5f",
+          "surface-bright": "#f7f9fb",
+          "on-surface-variant": "#3d4947",
+          "secondary-container": "#6df5e1",
+          "on-tertiary-fixed": "#07006c",
+          "on-primary-fixed-variant": "#005049",
+          "inverse-primary": "#6bd8cb",
+          "inverse-on-surface": "#eff1f3",
+          "outline": "#6d7a77",
+          "tertiary-fixed": "#e1e0ff",
+          "on-secondary-fixed": "#00201c",
+          "on-tertiary-container": "#fffbff",
+          "surface-container-highest": "#e0e3e5",
+          "on-error-container": "#93000a",
+          "outline-variant": "#bcc9c6",
+          "error-container": "#ffdad6",
+          "tertiary": "#4648d4",
+          "primary": "#00685f",
+          "surface-dim": "#d8dadc",
+          "on-tertiary": "#ffffff",
+          "on-secondary-fixed-variant": "#005048",
+          "on-primary-fixed": "#00201d",
+          "primary-container": "#008378",
+          "inverse-surface": "#2d3133",
+          "on-surface": "#191c1e",
+          "background": "#f7f9fb",
+          "on-error": "#ffffff",
+          "on-tertiary-fixed-variant": "#2f2ebe",
+          "secondary-fixed": "#71f8e4",
+          "primary-fixed-dim": "#6bd8cb",
+          "on-background": "#191c1e",
+          "error": "#ba1a1a",
+          "on-primary-container": "#f4fffc"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "space-xl": "2.5rem",
+          "gutter": "1.5rem",
+          "space-md": "1rem",
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": ["Plus Jakarta Sans"],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "headline-sm": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "26px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ],
+          "label-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "500"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-xl": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      }
+    }
+  }</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-surface font-body text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary">favorite</span></div><span class="text-headline-md font-headline-md text-primary">CareCompanion</span></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-full px-4 py-2"><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-4 py-2" data-path="1-health-check-input" href="#">1. Health Check Input</a><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-4 py-2" data-path="2-your-health-insights" href="#">2. Your Health Insights</a><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-4 py-2" data-path="3-wellness-coach" href="#">3. Wellness Coach</a></nav><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full pb-24">
+<!-- Hero Section / Header Banner with Asymmetric Balance -->
+<section class="w-full bg-gradient-to-br from-surface-container-low via-surface to-surface-container py-12 px-6 lg:px-12 relative overflow-hidden">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/3 -bottom-24 w-72 h-72 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
+<div class="flex flex-col gap-2 max-w-2xl">
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm uppercase tracking-wider font-bold">Step 3 of 3</span>
+<span class="text-on-surface-variant text-body-sm">• Your Personal AI Companion</span>
+</div>
+<h1 class="text-headline-xl text-on-surface font-headline-xl">Wellness Coach & Habit Tracker</h1>
+<p class="text-body-lg text-on-surface-variant">Keep your momentum going! Here are your daily rituals, customized hydration goals, and gentle AI insights based on your recent health check.</p>
+</div>
+<!-- Quick Streak Summary Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-lg flex items-center gap-6 min-w-[280px]">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-on-primary-container text-[32px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-sm text-on-surface-variant font-medium">Current Streak</span>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-xl text-primary font-bold">5 Days</span>
+<span class="text-body-sm text-on-surface-variant">🔥 On fire!</span>
+</div>
+<span class="text-body-sm text-secondary font-medium mt-1">2 days to personal best</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 w-full mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Habits, Water & Sleep (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- 7-Day Streak & Habit Tracker Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-headline-md text-on-surface">Weekly Habit Momentum</h2>
+<p class="text-body-md text-on-surface-variant">Check off your daily wellness goals to build lasting habits.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full self-start">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+<span class="text-label-md text-on-surface font-medium">Mon, Oct 24 - Sun, Oct 30</span>
+</div>
+</div>
+<!-- Days of the week header & interactive check grid -->
+<div class="grid grid-cols-7 gap-2 pt-2">
+<!-- Day 1: Mon -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-surface-container-low">
+<span class="text-label-sm text-on-surface-variant font-bold">MON</span>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-body-sm text-primary font-medium">4/4</span>
+</div>
+<!-- Day 2: Tue -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-surface-container-low">
+<span class="text-label-sm text-on-surface-variant font-bold">TUE</span>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-body-sm text-primary font-medium">4/4</span>
+</div>
+<!-- Day 3: Wed -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-surface-container-low">
+<span class="text-label-sm text-on-surface-variant font-bold">WED</span>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-body-sm text-primary font-medium">4/4</span>
+</div>
+<!-- Day 4: Thu -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-surface-container-low">
+<span class="text-label-sm text-on-surface-variant font-bold">THU</span>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-body-sm text-primary font-medium">4/4</span>
+</div>
+<!-- Day 5: Fri (Today - Active) -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-primary-container ring-2 ring-primary shadow-md">
+<span class="text-label-sm text-on-primary-container font-bold">FRI</span>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="text-body-sm text-on-primary-container font-bold">3/4</span>
+</div>
+<!-- Day 6: Sat -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-surface-container-low opacity-60">
+<span class="text-label-sm text-on-surface-variant font-bold">SAT</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</div>
+<span class="text-body-sm text-on-surface-variant">--</span>
+</div>
+<!-- Day 7: Sun -->
+<div class="flex flex-col items-center gap-3 p-3 rounded-lg bg-surface-container-low opacity-60">
+<span class="text-label-sm text-on-surface-variant font-bold">SUN</span>
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</div>
+<span class="text-body-sm text-on-surface-variant">--</span>
+</div>
+</div>
+<!-- Today's Checklist items -->
+<div class="flex flex-col gap-3 mt-4">
+<span class="text-headline-sm text-on-surface">Today's Goals</span>
+<label class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-body-md text-on-surface font-medium line-through text-on-surface-variant">Morning Hydration (500ml water right after waking)</span>
+</div>
+<span class="text-label-sm text-primary font-medium bg-primary-container px-3 py-1 rounded-full">Completed</span>
+</label>
+<label class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-body-md text-on-surface font-medium line-through text-on-surface-variant">15-minute brisk walk after lunch</span>
+</div>
+<span class="text-label-sm text-primary font-medium bg-primary-container px-3 py-1 rounded-full">Completed</span>
+</label>
+<label class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-body-md text-on-surface font-medium line-through text-on-surface-variant">Take daily magnesium & vitamin D supplement</span>
+</div>
+<span class="text-label-sm text-primary font-medium bg-primary-container px-3 py-1 rounded-full">Completed</span>
+</label>
+<label class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox"/>
+<span class="text-body-md text-on-surface font-medium">Wind-down screen-free routine (30 mins before bed)</span>
+</div>
+<span class="text-label-sm text-on-surface-variant bg-surface-variant px-3 py-1 rounded-full">Pending</span>
+</label>
+</div>
+</div>
+<!-- Two-column sub-grid: Water Intake & Sleep Quality Log -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Water Intake Counter -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-headline-md text-on-surface">Water Intake</h3>
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant">Goal: 2,500 ml daily</p>
+<div class="my-6 flex items-baseline justify-center gap-2">
+<span class="text-headline-xl text-secondary font-bold text-4xl">1,750</span>
+<span class="text-body-lg text-on-surface-variant">/ 2,500 ml</span>
+</div>
+<!-- Visual Progress Bar -->
+<div class="w-full h-4 rounded-full bg-surface-container-low overflow-hidden mb-6">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 70%;"></div>
+</div>
+</div>
+<!-- Quick Add Buttons -->
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2.5 px-3 rounded-lg bg-surface-container-low hover:bg-secondary-container hover:text-on-secondary-container text-label-md font-medium text-on-surface transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> 250ml
+            </button>
+<button class="py-2.5 px-3 rounded-lg bg-surface-container-low hover:bg-secondary-container hover:text-on-secondary-container text-label-md font-medium text-on-surface transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> 500ml
+            </button>
+<button class="py-2.5 px-3 rounded-lg bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container text-label-md font-medium transition-colors flex items-center justify-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">edit</span> Custom
+            </button>
+</div>
+</div>
+<!-- Sleep Quality Log -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-headline-md text-on-surface">Sleep Quality</h3>
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant">Last Night: 7h 45m (Deep: 2h 10m)</p>
+<div class="my-6 flex items-center justify-between bg-surface-container-low p-4 rounded-xl">
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface-variant">Sleep Score</span>
+<span class="text-headline-xl text-tertiary font-bold">88 / 100</span>
+</div>
+<div class="flex gap-1">
+<span class="w-3 h-12 rounded bg-tertiary/30"></span>
+<span class="w-3 h-16 rounded bg-tertiary/60"></span>
+<span class="w-3 h-20 rounded bg-tertiary"></span>
+<span class="w-3 h-14 rounded bg-tertiary/70"></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-label-sm text-on-surface-variant font-medium">Log how you woke up feeling:</span>
+<div class="grid grid-cols-4 gap-2 text-center">
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-sm flex flex-col items-center gap-1 transition-colors">
+<span class="text-xl">😴</span> Tired
+              </button>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-sm flex flex-col items-center gap-1 transition-colors">
+<span class="text-xl">😌</span> OK
+              </button>
+<button class="p-2 rounded-lg bg-primary-container text-on-primary-container text-label-sm flex flex-col items-center gap-1 ring-2 ring-primary">
+<span class="text-xl">⚡</span> Fresh
+              </button>
+<button class="p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-sm flex flex-col items-center gap-1 transition-colors">
+<span class="text-xl">🚀</span> Super
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: AI Wellness Coach & Recommendations (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- AI Coach Card -->
+<div class="bg-gradient-to-b from-primary to-surface-tint rounded-xl p-6 text-on-primary shadow-xl relative overflow-hidden flex flex-col gap-6">
+<div class="absolute -right-12 -bottom-12 w-48 h-48 rounded-full bg-secondary-fixed/20 blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-on-primary/20 backdrop-blur-md flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="text-headline-md text-on-primary font-bold">CareCompanion AI</h3>
+<span class="text-body-sm text-primary-fixed">Personalized for your recent check</span>
+</div>
+</div>
+<div class="bg-on-primary/10 backdrop-blur-md p-4 rounded-xl flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary-fixed text-label-sm font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span> Daily Insight
+          </div>
+<p class="text-body-md text-on-primary leading-relaxed">
+            "Your recent energy levels peaked after your morning walks. Consider shifting 10 minutes of your afternoon sedentary time into a short stretch break to maintain afternoon focus."
+          </p>
+</div>
+<!-- Interactive AI prompt chip suggestions -->
+<div class="flex flex-col gap-2">
+<span class="text-label-sm text-primary-fixed font-medium">Ask Coach anything:</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full bg-on-primary/15 hover:bg-on-primary/25 text-on-primary text-label-sm transition-colors text-left flex items-center gap-1.5" onclick="alert('AI Coach is ready to answer your hydration and sleep questions!')">
+<span>💧</span> Hydration tips for active days
+            </button>
+<button class="px-3 py-1.5 rounded-full bg-on-primary/15 hover:bg-on-primary/25 text-on-primary text-label-sm transition-colors text-left flex items-center gap-1.5" onclick="alert('AI Coach is ready to answer your hydration and sleep questions!')">
+<span>🧘</span> 5-min desk stretch guide
+            </button>
+<button class="px-3 py-1.5 rounded-full bg-on-primary/15 hover:bg-on-primary/25 text-on-primary text-label-sm transition-colors text-left flex items-center gap-1.5" onclick="alert('AI Coach is ready to answer your hydration and sleep questions!')">
+<span>🌙</span> Evening wind-down routine
+            </button>
+</div>
+</div>
+<!-- Ask input box -->
+<div class="relative mt-2">
+<input class="w-full bg-on-primary/10 border-0 placeholder-primary-fixed/70 text-on-primary rounded-xl py-3 pl-4 pr-12 text-body-md focus:outline-none focus:ring-2 focus:ring-primary-fixed" placeholder="Type a health question..." type="text"/>
+<button class="absolute right-2 top-1.5 w-9 h-9 rounded-lg bg-on-primary text-primary flex items-center justify-center hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+</button>
+</div>
+</div>
+<!-- Quick Tips & Reminders Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<h3 class="text-headline-sm text-on-surface">Upcoming Reminders</h3>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[20px]">notifications_active</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="text-label-md text-on-surface font-medium truncate">Evening Hydration Check</span>
+<span class="text-body-sm text-on-surface-variant">In 2 hours (8:00 PM)</span>
+</div>
+<span class="text-label-sm text-secondary font-medium">On</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[20px]">bedtime</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="text-label-md text-on-surface font-medium truncate">Wind-Down Notification</span>
+<span class="text-body-sm text-on-surface-variant">Tonight at 10:15 PM</span>
+</div>
+<span class="text-label-sm text-secondary font-medium">On</span>
+</div>
+</div>
+<!-- Motivation Photo Tile -->
+<div class="rounded-xl overflow-hidden shadow-sm relative h-48 flex flex-col justify-end p-6 bg-cover bg-center" data-alt="A tranquil nature setting featuring a calm morning lake surrounded by soft pine trees with gentle morning sunlight filtering through the mist, encouraging peaceful daily wellness habits in a soothing teal and soft grey palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLScn2wF2BBKbS7iF7qi6T4HTnzLTEJNCCE_VzG98tXktcZIqee7REXAzricWaGs5F1VGvoZpNCtW3l4eOVymHa_75ecxABqSGcrRzPDhMBYC4jUn5PF45htgPxTOnpalqLmyMcmtdJ1I_7ng-YDLaBya4pJAXR_wZD4AOOAqn0mgPmK2hZreTpN5YTwTrH7LPFqMgFMhrnGTXyosxtDSvs45EKWO4BS3TIK-XUvJCadRS1_NY4YO1UA')">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/20 to-transparent"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<span class="text-label-sm text-inverse-primary font-bold uppercase tracking-wider">Daily Inspiration</span>
+<p class="text-headline-sm text-inverse-on-surface">"Small daily improvements over time lead to stunning results."</p>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low py-space-xl"><div class="max-w-7xl mx-auto px-6 lg:px-12 text-center text-on-surface-variant text-body-sm">© 2024 CareCompanion. Your friendly daily health partner.</div></footer></body></html>

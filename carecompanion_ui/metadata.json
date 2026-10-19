@@ -1,0 +1,6 @@
+{
+  "name": "CareCompanion - Daily Health & Wellness Tracker",
+  "description": "Friendly consumer health companion with daily check-ins, personalized health score, habit tracking, and AI wellness coach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

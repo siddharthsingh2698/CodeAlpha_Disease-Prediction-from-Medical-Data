@@ -47,15 +47,15 @@ st.sidebar.title("Diagnostic Center")
 
 ui_mode = st.sidebar.radio(
     "🖥️ UI Experience Mode",
-    ["🌟 Stitch Modern Clinical Platform (Recommended)", "📋 Classic Streamlit Dashboard"],
+    ["🌟 CareCompanion Modern Platform (Recommended)", "📋 Classic Streamlit Dashboard"],
     index=0
 )
 
 if ui_mode.startswith("🌟"):
     col_hdr, col_lnk = st.columns([3, 1])
     with col_hdr:
-        st.markdown("<h2 style='margin:0;'>🩺 Multi-Disease Clinical Platform — Stitch UI Edition</h2>", unsafe_allow_html=True)
-        st.caption("Active ML Engine: Logistic Regression, SVM, Random Forest & XGBoost | 100% Interactive Controls")
+        st.markdown("<h2 style='margin:0;'>🩺 CareCompanion — Daily Health & Clinical Platform</h2>", unsafe_allow_html=True)
+        st.caption("Active ML Engine: Logistic Regression, SVM, Random Forest & XGBoost | CareCompanion Modern UI")
     with col_lnk:
         st.link_button("🚀 Open Direct Fullscreen (Port 8000)", "http://localhost:8000", type="primary", use_container_width=True)
 

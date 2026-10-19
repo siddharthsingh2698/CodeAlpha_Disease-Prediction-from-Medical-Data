@@ -19,15 +19,23 @@ def run_tests():
     print("Testing Multi-Disease Clinical Platform Web API")
     print("=" * 60)
 
-    # 1. Test Root HTML
+    # 1. Test Root HTML & Assets
     with urllib.request.urlopen(f"{base_url}/") as response:
         assert response.status == 200, f"Expected 200, got {response.status}"
         html = response.read().decode("utf-8")
-        assert "Multi-Disease Prediction Platform" in html
-        assert "btn-run-assessment" in html
-        assert "btn-load-healthy" in html
-        assert "btn-load-high-risk" in html
-        print("[+] 1. GET / -> SUCCESS: Stitch SPA HTML loaded (203 KB).")
+        assert "CareCompanion" in html
+        print("[+] 1. GET / -> SUCCESS: CareCompanion HTML loaded.")
+
+    # Test CareCompanion Assets
+    with urllib.request.urlopen(f"{base_url}/assets/index-D4ZBeDGU.css") as response:
+        assert response.status == 200
+        css = response.read()
+        print(f"[+] 1b. GET /assets/index-D4ZBeDGU.css -> SUCCESS ({len(css)} bytes).")
+
+    with urllib.request.urlopen(f"{base_url}/assets/index-CjvMxYsK.js") as response:
+        assert response.status == 200
+        js = response.read()
+        print(f"[+] 1c. GET /assets/index-CjvMxYsK.js -> SUCCESS ({len(js)} bytes).")
 
     # 2. Test Heart Disease Predict
     heart_payload = {

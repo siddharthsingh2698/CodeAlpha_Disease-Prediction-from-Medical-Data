@@ -40,6 +40,11 @@ FIGURES_DIR = BASE_DIR / "reports" / "figures"
 if FIGURES_DIR.exists():
     app.mount("/figures", StaticFiles(directory=str(FIGURES_DIR)), name="figures")
 
+# Mount CareCompanion React assets
+CARE_ASSETS_DIR = BASE_DIR / "carecompanion_ui" / "dist" / "assets"
+if CARE_ASSETS_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(CARE_ASSETS_DIR)), name="assets")
+
 # Disease mappings
 DISEASE_KEYS = {
     "heart": "heart_disease",
@@ -51,8 +56,10 @@ DISEASE_KEYS = {
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_index():
-    """Serves the integrated Stitch UI single page application."""
-    index_file = BASE_DIR / "stitch_ui" / "index.html"
+    """Serves the CareCompanion Multi-Disease Clinical Platform application."""
+    index_file = BASE_DIR / "carecompanion_ui" / "dist" / "index.html"
+    if not index_file.exists():
+        index_file = BASE_DIR / "stitch_ui" / "index.html"
     if not index_file.exists():
         raise HTTPException(status_code=404, detail="Index HTML not found")
     with open(index_file, "r", encoding="utf-8") as f:

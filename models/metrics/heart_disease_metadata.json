@@ -1,5 +1,5 @@
 {
-    "disease": "heart_disease",
+    "disease": "Heart Disease",
     "champion_model": "SVM",
     "champion_metrics": {
         "Model": "SVM",
@@ -8,32 +8,30 @@
         "Recall": 1.0,
         "Specificity": 0.0,
         "F1-Score": 0.3333,
-        "ROC-AUC": 0.5254,
-        "CV_F1_Mean": 0.2569,
-        "CV_F1_Std": 0.0427
+        "ROC-AUC": 0.4886,
+        "CV_F1_Best": 0.2873
     },
-    "total_samples": 10000,
-    "test_samples": 2000,
-    "feature_columns": [
-        "Age",
-        "Gender",
-        "Blood Pressure",
-        "Cholesterol Level",
-        "Exercise Habits",
-        "Smoking",
-        "Family Heart Disease",
-        "Diabetes",
-        "BMI",
-        "High Blood Pressure",
-        "Low HDL Cholesterol",
-        "High LDL Cholesterol",
-        "Alcohol Consumption",
-        "Stress Level",
-        "Sleep Hours",
-        "Sugar Consumption",
-        "Triglyceride Level",
-        "Fasting Blood Sugar",
-        "CRP Level",
-        "Homocysteine Level"
-    ]
+    "best_hyperparameters": {
+        "Logistic_Regression": {
+            "C": 0.1,
+            "solver": "liblinear"
+        },
+        "SVM": {
+            "C": 0.5,
+            "gamma": "auto"
+        },
+        "Random_Forest": {
+            "max_depth": 6,
+            "min_samples_split": 2,
+            "n_estimators": 100
+        },
+        "XGBoost": {
+            "learning_rate": 0.15,
+            "max_depth": 5,
+            "scale_pos_weight": 2.0
+        }
+    },
+    "total_cohort_size": 10000,
+    "test_holdout_size": 2000,
+    "feature_count": 20
 }

@@ -1,27 +1,37 @@
 {
-    "disease": "diabetes",
-    "champion_model": "Random_Forest",
+    "disease": "Type-2 Diabetes",
+    "champion_model": "XGBoost",
     "champion_metrics": {
-        "Model": "Random_Forest",
+        "Model": "XGBoost",
         "Accuracy": 0.7597,
-        "Precision": 0.6545,
-        "Recall": 0.6667,
-        "Specificity": 0.81,
-        "F1-Score": 0.6606,
-        "ROC-AUC": 0.8272,
-        "CV_F1_Mean": 0.6525,
-        "CV_F1_Std": 0.0366
+        "Precision": 0.6197,
+        "Recall": 0.8148,
+        "Specificity": 0.73,
+        "F1-Score": 0.704,
+        "ROC-AUC": 0.8147,
+        "CV_F1_Best": 0.6708
     },
-    "total_samples": 768,
-    "test_samples": 154,
-    "feature_columns": [
-        "Pregnancies",
-        "Glucose",
-        "BloodPressure",
-        "SkinThickness",
-        "Insulin",
-        "BMI",
-        "DiabetesPedigreeFunction",
-        "Age"
-    ]
+    "best_hyperparameters": {
+        "Logistic_Regression": {
+            "C": 0.1,
+            "solver": "lbfgs"
+        },
+        "SVM": {
+            "C": 0.5,
+            "gamma": "scale"
+        },
+        "Random_Forest": {
+            "max_depth": 6,
+            "min_samples_split": 5,
+            "n_estimators": 100
+        },
+        "XGBoost": {
+            "learning_rate": 0.04,
+            "max_depth": 3,
+            "scale_pos_weight": 2.0
+        }
+    },
+    "total_cohort_size": 768,
+    "test_holdout_size": 154,
+    "feature_count": 8
 }

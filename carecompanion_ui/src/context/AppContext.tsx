@@ -8,14 +8,13 @@ import {
   ScreenId,
   DiseaseKey,
   ModelKey,
+  ClinicalTool,
   UserProfile,
   ActivityNotification,
   DailyHabitGoal,
   ScheduledReminder,
   CoachChatMessage,
   AppContextType,
-  ClinicalBiomarkers,
-  ClinicalPredictionResult,
 } from '../types';
 import {
   HealthCheckInputs,
@@ -28,12 +27,12 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const INITIAL_USER: UserProfile = {
   id: 'usr-1',
-  name: 'Dr. Siddharth Singh',
-  email: 'siddharth@carecompanion.ai',
+  name: 'Alex Rivera',
+  email: 'alex.rivera@example.com',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
-  bio: 'Clinical triage practitioner focusing on cardiovascular risk, metabolic health, and explainable AI.',
-  age: 45,
-  weight: 72,
+  bio: 'Product designer focusing on gentle habits, hydration consistency, and restorative morning sleep.',
+  age: 32,
+  weight: 68,
   waterGoal: 2500,
   sleepGoal: 8,
   isGuest: false,
@@ -41,71 +40,36 @@ const INITIAL_USER: UserProfile = {
 };
 
 const INITIAL_HEALTH_INPUTS: HealthCheckInputs = {
-  age: 45,
-  weight: 72,
-  sleepHours: 7.0,
+  age: 32,
+  weight: 68,
+  sleepHours: 7.5,
   bpVibe: 'normal',
-  exercise: 'moderate',
+  exercise: 'daily',
   habits: ['plant-forward', 'water-tracker'],
-};
-
-const INITIAL_CLINICAL_BIOMARKERS: ClinicalBiomarkers = {
-  age: 48,
-  gender: 'Male',
-  bloodPressure: 128,
-  cholesterol: 205,
-  bmi: 24.8,
-  sleepHours: 7.0,
-  triglycerides: 145,
-  fastingBloodSugar: 98,
-  crpLevel: 1.4,
-  homocysteine: 10.2,
-  exercise: 'moderate',
-  smoking: false,
-  familyHistory: false,
-  diabetesHistory: false,
-  highBP: false,
-  lowHDL: false,
-  highLDL: false,
-  alcohol: 'moderate',
-  stress: 'moderate',
-  sugar: 'moderate',
-  // Diabetes defaults
-  pregnancies: 2,
-  glucose: 110,
-  insulin: 85,
-  skinThickness: 23,
-  pedigree: 0.38,
-  // Breast cancer defaults
-  meanRadius: 13.5,
-  meanTexture: 18.2,
-  meanPerimeter: 88.0,
-  meanArea: 580.0,
-  meanSmoothness: 0.095,
 };
 
 const INITIAL_GOALS: DailyHabitGoal[] = [
   {
     id: 'g-1',
-    title: 'Morning Hydration (500ml water upon waking)',
+    title: 'Morning Hydration (500ml water right after waking)',
     completed: true,
     category: 'hydration',
   },
   {
     id: 'g-2',
-    title: 'Post-meal 15-minute brisk walk for glucose regulation',
+    title: '15-minute brisk walk after lunch',
     completed: true,
     category: 'movement',
   },
   {
     id: 'g-3',
-    title: 'Daily Omega-3 & Magnesium vascular support',
+    title: 'Take daily magnesium & vitamin D supplement',
     completed: true,
     category: 'nutrition',
   },
   {
     id: 'g-4',
-    title: 'Digital sunset: Screen-free wind down at 10 PM',
+    title: 'Wind-down screen-free routine (30 mins before bed)',
     completed: false,
     category: 'sleep',
   },
@@ -114,24 +78,16 @@ const INITIAL_GOALS: DailyHabitGoal[] = [
 const INITIAL_REMINDERS: ScheduledReminder[] = [
   {
     id: 'r-1',
-    title: 'Blood Pressure & Vitals Log',
-    timeDisplay: 'Today at 6:00 PM',
-    enabled: true,
-    icon: 'speed',
-    colorClass: 'bg-primary-container text-on-primary-container',
-  },
-  {
-    id: 'r-2',
-    title: 'Evening Hydration Target',
+    title: 'Evening Hydration Check',
     timeDisplay: 'In 2 hours (8:00 PM)',
     enabled: true,
-    icon: 'water_drop',
+    icon: 'notifications_active',
     colorClass: 'bg-secondary-container text-on-secondary-container',
   },
   {
-    id: 'r-3',
-    title: 'Restorative Sleep Preparation',
-    timeDisplay: 'Tonight at 10:30 PM',
+    id: 'r-2',
+    title: 'Wind-Down Notification',
+    timeDisplay: 'Tonight at 10:15 PM',
     enabled: true,
     icon: 'bedtime',
     colorClass: 'bg-tertiary-fixed text-tertiary',
@@ -150,12 +106,12 @@ const INITIAL_NOTIFICATIONS: ActivityNotification[] = [
   },
   {
     id: 'n-2',
-    title: 'Hydration Target',
-    message: 'Great job maintaining steady water intake today!',
-    timeAgo: '15m ago',
+    title: 'Streak Protected!',
+    message: 'You reached day 5 of your wellness streak! 2 days to your all-time record.',
+    timeAgo: '10m ago',
     read: false,
-    type: 'water',
-    icon: 'water_drop',
+    type: 'achievement',
+    icon: 'local_fire_department',
   },
 ];
 
@@ -166,39 +122,20 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [user, setUser] = useState<UserProfile>(INITIAL_USER);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Clinical Platform State
+  // Clinical Platform state
   const [selectedDisease, setSelectedDisease] = useState<DiseaseKey>('heart_disease');
   const [selectedModel, setSelectedModel] = useState<ModelKey>('champion');
-  const [clinicalBiomarkers, setClinicalBiomarkers] = useState<ClinicalBiomarkers>(INITIAL_CLINICAL_BIOMARKERS);
-  const [clinicalResult, setClinicalResult] = useState<ClinicalPredictionResult | null>(null);
-  const [isAssessing, setIsAssessing] = useState<boolean>(false);
+  const [clinicalResult, setClinicalResult] = useState<any>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  const [activeClinicalTool, setActiveClinicalTool] = useState<ClinicalTool>('none');
 
   // Core Wellness State
   const [healthInputs, setHealthInputs] = useState<HealthCheckInputs>(INITIAL_HEALTH_INPUTS);
   const [healthAssessment, setHealthAssessment] = useState<HealthAssessment>(() =>
     generateHealthAssessment(INITIAL_HEALTH_INPUTS)
   );
-  const [todayGoals, setTodayGoals] = useState<DailyHabitGoal[]>(INITIAL_GOALS);
-  const [waterIntake, setWaterIntake] = useState<number>(1250);
-  const [sleepFeeling, setSleepFeeling] = useState<'tired' | 'ok' | 'fresh' | 'super'>('fresh');
-  const [reminders, setReminders] = useState<ScheduledReminder[]>(INITIAL_REMINDERS);
-  const [chatMessages, setChatMessages] = useState<CoachChatMessage[]>([
-    {
-      id: 'msg-init-1',
-      sender: 'coach',
-      text: "Hello! I am your CareCompanion AI Wellness & Clinical Coach. How are your energy levels and vitals today?",
-      timestamp: '9:00 AM',
-    },
-  ]);
-  const [isCoachTyping, setIsCoachTyping] = useState<boolean>(false);
-  const [notifications, setNotifications] = useState<ActivityNotification[]>(INITIAL_NOTIFICATIONS);
 
-  // Modals
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-
-  // Dark Mode Sync
+  // Sync dark mode class
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add('dark');
@@ -218,11 +155,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 4000);
-  };
-
-  const updateClinicalBiomarkers = (updates: Partial<ClinicalBiomarkers>) => {
-    setClinicalBiomarkers(prev => ({ ...prev, ...updates }));
+    setTimeout(() => setToastMessage(null), 3500);
   };
 
   const updateHealthInputs = (inputs: Partial<HealthCheckInputs>) => {
@@ -230,54 +163,72 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   const updateUser = (updates: Partial<UserProfile>) => {
-    setUser(prev => ({ ...prev, ...updates }));
+    setUser(prev => {
+      const updated = { ...prev, ...updates };
+      // Also sync age and weight into health inputs
+      if (updates.age !== undefined || updates.weight !== undefined) {
+        setHealthInputs(h => ({
+          ...h,
+          age: updates.age ?? h.age,
+          weight: updates.weight ?? h.weight,
+        }));
+      }
+      return updated;
+    });
+    showToast('Profile updated successfully!');
   };
 
-  // Convert clinicalBiomarkers into backend payload
-  const buildBiomarkerPayload = (): Record<string, any> => {
-    const b = clinicalBiomarkers;
+  // Convert inputs to ML backend biomarkers
+  const buildBiomarkerPayload = (inputs: HealthCheckInputs) => {
+    const isHighBP = inputs.bpVibe === 'high';
+    const isNormalBP = inputs.bpVibe === 'normal';
+    const systolicBP = isHighBP ? 158 : isNormalBP ? 118 : 132;
+    const chol = isHighBP ? 265 : 188;
+    const bmi = Number((inputs.weight / (1.75 * 1.75)).toFixed(1));
+    const isSmoker = !inputs.habits.includes('smoke-free');
+
     if (selectedDisease === 'heart_disease') {
       return {
-        "Age": b.age,
-        "Gender": b.gender,
-        "Blood Pressure": b.bloodPressure,
-        "Cholesterol Level": b.cholesterol,
-        "Exercise Habits": b.exercise === 'active' ? 'High' : (b.exercise === 'moderate' ? 'Medium' : 'Low'),
-        "Smoking": b.smoking ? 'Yes' : 'No',
-        "Family Heart Disease": b.familyHistory ? 'Yes' : 'No',
-        "Diabetes": b.diabetesHistory ? 'Yes' : 'No',
-        "BMI": b.bmi,
-        "High Blood Pressure": b.highBP ? 'Yes' : 'No',
-        "Low HDL Cholesterol": b.lowHDL ? 'Yes' : 'No',
-        "High LDL Cholesterol": b.highLDL ? 'Yes' : 'No',
-        "Alcohol Consumption": b.alcohol === 'none' ? 'Low' : (b.alcohol === 'heavy' ? 'High' : 'Medium'),
-        "Stress Level": b.stress === 'high' ? 'High' : (b.stress === 'low' ? 'Low' : 'Medium'),
-        "Sleep Hours": b.sleepHours,
-        "Sugar Consumption": b.sugar === 'high' ? 'High' : (b.sugar === 'low' ? 'Low' : 'Medium'),
-        "Triglyceride Level": b.triglycerides,
-        "Fasting Blood Sugar": b.fastingBloodSugar,
-        "CRP Level": b.crpLevel,
-        "Homocysteine Level": b.homocysteine,
+        "Age": inputs.age,
+        "Gender": "Male",
+        "Blood Pressure": systolicBP,
+        "Cholesterol Level": chol,
+        "Exercise Habits": inputs.exercise === 'daily' ? 'High' : (inputs.exercise === 'moderate' ? 'Medium' : 'Low'),
+        "Smoking": isSmoker ? 'Yes' : 'No',
+        "Family Heart Disease": isHighBP ? 'Yes' : 'No',
+        "Diabetes": 'No',
+        "BMI": bmi,
+        "High Blood Pressure": isHighBP ? 'Yes' : 'No',
+        "Low HDL Cholesterol": isHighBP ? 'Yes' : 'No',
+        "High LDL Cholesterol": isHighBP ? 'Yes' : 'No',
+        "Alcohol Consumption": 'Low',
+        "Stress Level": inputs.habits.includes('mindful') ? 'Low' : (isHighBP ? 'High' : 'Medium'),
+        "Sleep Hours": inputs.sleepHours,
+        "Sugar Consumption": inputs.habits.includes('plant-forward') ? 'Low' : 'Medium',
+        "Triglyceride Level": isHighBP ? 220 : 130,
+        "Fasting Blood Sugar": isHighBP ? 138 : 90,
+        "CRP Level": isHighBP ? 4.2 : 1.1,
+        "Homocysteine Level": isHighBP ? 16.5 : 9.5
       };
     } else if (selectedDisease === 'diabetes') {
       return {
-        "Pregnancies": b.pregnancies ?? 2,
-        "Glucose": b.glucose ?? b.fastingBloodSugar ?? 120,
-        "BloodPressure": b.bloodPressure < 120 ? b.bloodPressure : 75,
-        "SkinThickness": b.skinThickness ?? 25.0,
-        "Insulin": b.insulin ?? 95.0,
-        "BMI": b.bmi,
-        "DiabetesPedigreeFunction": b.pedigree ?? 0.45,
-        "Age": Math.round(b.age),
+        "Pregnancies": 2,
+        "Glucose": isHighBP ? 168 : 95,
+        "BloodPressure": isHighBP ? 88 : 70,
+        "SkinThickness": 25.0,
+        "Insulin": isHighBP ? 185.0 : 80.0,
+        "BMI": bmi,
+        "DiabetesPedigreeFunction": isHighBP ? 0.75 : 0.35,
+        "Age": inputs.age
       };
     } else {
       // Breast Cancer
       return {
-        "mean radius": b.meanRadius ?? 14.2,
-        "mean texture": b.meanTexture ?? 19.5,
-        "mean perimeter": b.meanPerimeter ?? 92.5,
-        "mean area": b.meanArea ?? 654.0,
-        "mean smoothness": b.meanSmoothness ?? 0.096,
+        "mean radius": isHighBP ? 17.8 : 12.4,
+        "mean texture": isHighBP ? 23.4 : 16.2,
+        "mean perimeter": isHighBP ? 118.0 : 80.5,
+        "mean area": isHighBP ? 980.0 : 475.0,
+        "mean smoothness": isHighBP ? 0.115 : 0.088,
         "mean compactness": 0.104,
         "mean concavity": 0.088,
         "mean concave points": 0.048,
@@ -293,169 +244,113 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         "concave points error": 0.011,
         "symmetry error": 0.020,
         "fractal dimension error": 0.0037,
-        "worst radius": (b.meanRadius ?? 14.2) * 1.15,
-        "worst texture": (b.meanTexture ?? 19.5) * 1.3,
-        "worst perimeter": (b.meanPerimeter ?? 92.5) * 1.15,
-        "worst area": (b.meanArea ?? 654.0) * 1.35,
+        "worst radius": isHighBP ? 21.5 : 14.1,
+        "worst texture": 25.6,
+        "worst perimeter": 107.0,
+        "worst area": 880.0,
         "worst smoothness": 0.132,
         "worst compactness": 0.254,
         "worst concavity": 0.271,
         "worst concave points": 0.114,
         "worst symmetry": 0.290,
-        "worst fractal dimension": 0.084,
+        "worst fractal dimension": 0.084
       };
     }
   };
 
-  // Run Real ML Inference
-  const runClinicalAssessment = async () => {
-    setIsAssessing(true);
-    showToast(`Transmitting biomarkers to ML inference engine for ${selectedDisease.replace('_', ' ').toUpperCase()}...`);
+  // Full Real ML Assessment
+  const calculateAndGoToInsights = async () => {
+    setIsAnalyzing(true);
+    showToast(`Evaluating biomarkers with ${selectedModel.replace('_', ' ')}...`);
 
-    const payload = {
-      disease: selectedDisease,
-      model: selectedModel,
-      biomarkers: buildBiomarkerPayload(),
-    };
+    let assessment = generateHealthAssessment(healthInputs);
 
     try {
+      const payload = {
+        disease: selectedDisease,
+        model: selectedModel,
+        biomarkers: buildBiomarkerPayload(healthInputs)
+      };
+
       const response = await fetch('/api/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(payload)
       });
 
       const res = await response.json();
       if (res.status === 'success') {
-        const data: ClinicalPredictionResult = res.data;
+        const data = res.data;
         setClinicalResult(data);
 
-        // Update health assessment score based on probability
-        const wellnessScore = Math.max(5, Math.min(98, Math.round(100 - data.probability)));
-        setHealthAssessment(prev => ({
-          ...prev,
-          score: wellnessScore,
+        // Compute score: 100 - risk probability
+        const mlScore = Math.max(5, Math.min(99, Math.round(100 - data.probability)));
+        assessment = {
+          ...assessment,
+          score: mlScore,
           ratingText: data.risk_level,
-          summary: `${data.predicted_label}: ${data.recommendation}`,
-        }));
+          description: `${data.predicted_label}: ${data.recommendation}`,
+        };
 
-        showToast(`Assessment complete! Risk: ${data.probability.toFixed(1)}% (${data.risk_level})`);
-        setCurrentScreen('2-your-health-insights');
-      } else {
-        showToast(`Inference error: ${res.message}`);
+        // Add SHAP factors to milestones / focus areas
+        if (data.top_contributing_factors && data.top_contributing_factors.length > 0) {
+          const topFactor = data.top_contributing_factors[0];
+          assessment.focusAreas = [
+            {
+              id: 'f-shap',
+              title: `Primary Factor: ${topFactor.Feature}`,
+              badge: `${topFactor.Direction}`,
+              description: `Attribution impact: ${topFactor.Impact > 0 ? '+' : ''}${topFactor.Impact.toFixed(3)} Log-Odds.`,
+              icon: 'insights',
+            },
+            ...assessment.focusAreas.slice(0, 1),
+          ];
+        }
       }
     } catch (err: any) {
-      console.error(err);
-      showToast(`Connection to inference backend failed: ${err.message}`);
+      console.warn('API predict fallback:', err);
     } finally {
-      setIsAssessing(false);
+      setIsAnalyzing(false);
     }
+
+    setHealthAssessment(assessment);
+    setCurrentScreen('2-your-health-insights');
+    addNotification({
+      title: 'Clinical Assessment Complete',
+      message: `Computed calibrated wellness score: ${assessment.score}/100 (${assessment.ratingText}).`,
+      type: 'score',
+      icon: 'auto_awesome',
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Preset Handlers
   const loadHealthyPreset = () => {
-    if (selectedDisease === 'heart_disease') {
-      updateClinicalBiomarkers({
-        age: 38,
-        bloodPressure: 118,
-        cholesterol: 185,
-        bmi: 22.4,
-        sleepHours: 7.5,
-        triglycerides: 120,
-        fastingBloodSugar: 88,
-        crpLevel: 0.8,
-        homocysteine: 9.4,
-        exercise: 'active',
-        smoking: false,
-        familyHistory: false,
-        diabetesHistory: false,
-        highBP: false,
-        lowHDL: false,
-        highLDL: false,
-        alcohol: 'none',
-        stress: 'low',
-        sugar: 'low',
-      });
-      showToast('Loaded Healthy Cardiovascular Preset: BP 118, Chol 185 mg/dL, FBS 88');
-    } else if (selectedDisease === 'diabetes') {
-      updateClinicalBiomarkers({
-        age: 30,
-        bloodPressure: 70,
-        bmi: 21.5,
-        glucose: 88,
-        insulin: 70,
-        pregnancies: 1,
-        pedigree: 0.25,
-      });
-      showToast('Loaded Healthy Glycemic Preset: Glucose 88 mg/dL, BMI 21.5');
-    } else {
-      updateClinicalBiomarkers({
-        age: 32,
-        meanRadius: 11.8,
-        meanTexture: 15.4,
-        meanPerimeter: 75.0,
-        meanArea: 420.0,
-        meanSmoothness: 0.082,
-      });
-      showToast('Loaded Benign Cytology Preset: Small uniform nuclear dimensions');
-    }
+    updateHealthInputs({
+      age: 32,
+      weight: 66,
+      sleepHours: 8.0,
+      bpVibe: 'normal',
+      exercise: 'daily',
+      habits: ['plant-forward', 'smoke-free', 'water-tracker', 'mindful'],
+    });
+    showToast('Loaded Healthy Baseline: BP Normal, Sleep 8h, Smoke-Free, Active');
   };
 
   const loadHighRiskPreset = () => {
-    if (selectedDisease === 'heart_disease') {
-      updateClinicalBiomarkers({
-        age: 62,
-        bloodPressure: 158,
-        cholesterol: 268,
-        bmi: 31.4,
-        sleepHours: 5.5,
-        triglycerides: 235,
-        fastingBloodSugar: 142,
-        crpLevel: 4.8,
-        homocysteine: 18.2,
-        exercise: 'sedentary',
-        smoking: true,
-        familyHistory: true,
-        diabetesHistory: true,
-        highBP: true,
-        lowHDL: true,
-        highLDL: true,
-        alcohol: 'moderate',
-        stress: 'high',
-        sugar: 'high',
-      });
-      showToast('Loaded High-Risk Pathological Markers: BP 158, Chol 268, Smoking: Yes');
-    } else if (selectedDisease === 'diabetes') {
-      updateClinicalBiomarkers({
-        age: 54,
-        bloodPressure: 92,
-        bmi: 37.8,
-        glucose: 172,
-        insulin: 210,
-        pregnancies: 4,
-        pedigree: 0.85,
-      });
-      showToast('Loaded High-Risk Diabetic Profile: Glucose 172 mg/dL, BMI 37.8');
-    } else {
-      updateClinicalBiomarkers({
-        age: 58,
-        meanRadius: 18.5,
-        meanTexture: 25.4,
-        meanPerimeter: 122.0,
-        meanArea: 1050.0,
-        meanSmoothness: 0.118,
-      });
-      showToast('Loaded High-Risk Malignant Cytology Indicators');
-    }
+    updateHealthInputs({
+      age: 62,
+      weight: 96,
+      sleepHours: 5.5,
+      bpVibe: 'high',
+      exercise: 'starter',
+      habits: ['coffee-lover'],
+    });
+    showToast('Loaded Elevated Risk Profile: BP Elevated, Sleep 5.5h, Sedentary');
   };
 
-  // Download Clinical Diagnostic Report
-  const downloadClinicalReport = async () => {
-    if (!clinicalResult) {
-      showToast('Please run a diagnostic risk assessment first.');
-      return;
-    }
-
+  // Download Clinical Report
+  const downloadReport = async () => {
     try {
       showToast('Generating clinical diagnostic markdown summary...');
       const response = await fetch('/api/download-report', {
@@ -464,8 +359,13 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         body: JSON.stringify({
           disease: selectedDisease,
           model: selectedModel,
-          prediction: clinicalResult,
-          inputs: buildBiomarkerPayload(),
+          prediction: clinicalResult || {
+            probability: 100 - healthAssessment.score,
+            risk_level: healthAssessment.ratingText,
+            predicted_label: healthAssessment.ratingText,
+            recommendation: healthAssessment.description,
+          },
+          inputs: buildBiomarkerPayload(healthInputs),
         }),
       });
 
@@ -476,42 +376,104 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       a.download = `Clinical_Risk_Report_${selectedDisease}.md`;
       a.click();
       URL.revokeObjectURL(url);
-      showToast('Report downloaded successfully!');
+      showToast('Diagnostic report downloaded successfully!');
     } catch (e: any) {
-      showToast(`Download failed: ${e.message}`);
+      showToast(`Report download error: ${e.message}`);
     }
   };
 
-  const calculateAndGoToInsights = () => {
-    runClinicalAssessment();
-  };
+  // Habit Goals
+  const [todayGoals, setTodayGoals] = useState<DailyHabitGoal[]>(INITIAL_GOALS);
 
   const toggleGoal = (id: string) => {
     setTodayGoals(prev =>
-      prev.map(g => (g.id === id ? { ...g, completed: !g.completed } : g))
+      prev.map(goal => {
+        if (goal.id === id) {
+          const nextState = !goal.completed;
+          if (nextState) {
+            addNotification({
+              title: 'Goal Accomplished!',
+              message: `Completed "${goal.title}". Great momentum!`,
+              type: 'habit',
+              icon: 'check_circle',
+            });
+          }
+          return { ...goal, completed: nextState };
+        }
+        return goal;
+      })
     );
   };
 
+  // Water intake
+  const [waterIntake, setWaterIntake] = useState<number>(1750);
+
   const addWater = (amount: number) => {
-    setWaterIntake(prev => prev + amount);
-    showToast(`Added +${amount} ml water! Hydration level updated.`);
+    setWaterIntake(prev => {
+      const next = Math.max(0, prev + amount);
+      addNotification({
+        title: 'Water Logged',
+        message: `Added +${amount} ml. Current daily total: ${next.toLocaleString()} / 2,500 ml.`,
+        type: 'water',
+        icon: 'water_drop',
+      });
+      return next;
+    });
   };
 
   const resetWater = () => {
     setWaterIntake(0);
+    showToast('Daily water intake reset to 0 ml.');
   };
+
+  // Sleep Quality
+  const [sleepFeeling, setSleepFeeling] = useState<'tired' | 'ok' | 'fresh' | 'super'>('fresh');
 
   const handleSetSleepFeeling = (feeling: 'tired' | 'ok' | 'fresh' | 'super') => {
     setSleepFeeling(feeling);
+    addNotification({
+      title: 'Sleep Feeling Logged',
+      message: `You marked today's waking state as "${feeling.toUpperCase()}". Sleep metrics updated.`,
+      type: 'achievement',
+      icon: 'bedtime',
+    });
   };
+
+  // Reminders
+  const [reminders, setReminders] = useState<ScheduledReminder[]>(INITIAL_REMINDERS);
 
   const toggleReminder = (id: string) => {
     setReminders(prev =>
-      prev.map(r => (r.id === id ? { ...r, enabled: !r.enabled } : r))
+      prev.map(r => {
+        if (r.id === id) {
+          const nextState = !r.enabled;
+          addNotification({
+            title: `Reminder ${nextState ? 'Activated' : 'Paused'}`,
+            message: `"${r.title}" is now ${nextState ? 'active' : 'turned off'}.`,
+            type: 'reminder',
+            icon: 'notifications_active',
+          });
+          return { ...r, enabled: nextState };
+        }
+        return r;
+      })
     );
   };
 
+  // AI Wellness Coach Chat
+  const [chatMessages, setChatMessages] = useState<CoachChatMessage[]>([
+    {
+      id: 'msg-0',
+      sender: 'coach',
+      text: "Hello! I'm your CareCompanion wellness guide. I've analyzed your check-in: 7.5 hours of sleep, 68 kg weight, and daily workouts. How can I support your routine today?",
+      timestamp: 'Just now',
+    },
+  ]);
+  const [isCoachTyping, setIsCoachTyping] = useState<boolean>(false);
+
   const sendMessageToCoach = (text: string) => {
+    if (!text.trim()) return;
+
     const userMsg: CoachChatMessage = {
       id: `msg-${Date.now()}`,
       sender: 'user',
@@ -523,19 +485,19 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setIsCoachTyping(true);
 
     setTimeout(() => {
-      let reply = "Maintaining consistent sleep, hydration, and nutritional moderation will directly optimize your metabolic markers and cardiovascular resilience!";
+      let reply = "That's a fantastic focus. Maintaining your consistent daily sleep and hydration habits will significantly boost your daytime energy!";
       const lower = text.toLowerCase();
 
       if (lower.includes('heart') || lower.includes('cardio') || lower.includes('bp') || lower.includes('blood pressure')) {
-        reply = `For cardiovascular health, maintaining blood pressure under 120/80 mmHg and reducing saturated fats can improve your arterial elasticity. Our ${selectedModel} model emphasizes systolic control and stress regulation.`;
+        reply = `For cardiovascular health with ${selectedModel.replace('_', ' ')}, keeping systolic pressure under 120 mmHg and sodium under 2,000 mg/day directly reduces arterial strain.`;
       } else if (lower.includes('diabetes') || lower.includes('sugar') || lower.includes('glucose')) {
-        reply = "To manage glycemic index, focus on fiber-dense complex carbohydrates, post-meal 10-minute walks, and monitoring fasting glucose under 100 mg/dL.";
-      } else if (lower.includes('cholesterol') || lower.includes('lipid')) {
-        reply = "Higher HDL ('good') cholesterol and lower triglycerides protect against plaque accumulation. Soluble fiber (oats, legumes, flaxseed) actively binds to excess LDL.";
-      } else if (lower.includes('water') || lower.includes('hydration')) {
-        reply = `You have logged ${waterIntake} ml today! Aim for 2,500 ml. Proper hydration maintains optimal blood viscosity and renal filtration.`;
-      } else if (lower.includes('sleep')) {
-        reply = `With your current ${clinicalBiomarkers.sleepHours} hours recorded, aim for a steady 7.5 hours. Deep stage-3 slow-wave sleep is when your vascular system resets arterial tone.`;
+        reply = "For optimal glycemic control, pairing fiber-rich vegetables with protein slows gastric emptying and keeps post-prandial spikes minimal.";
+      } else if (lower.includes('hydration') || lower.includes('water')) {
+        reply = `With your current intake of ${waterIntake} ml towards your 2,500 ml target, try drinking one glass every 90 minutes for cellular absorption!`;
+      } else if (lower.includes('sleep') || lower.includes('wind-down') || lower.includes('bed')) {
+        reply = "For deep restorative sleep, keep lighting warm and dim from 9:00 PM. A chamomile infusion paired with reading signals melatonin release.";
+      } else if (lower.includes('stretch') || lower.includes('desk') || lower.includes('neck')) {
+        reply = "Here is your 5-min desk stretch: 1. Chin tucks (10 reps), 2. Shoulder blade squeezes (15s hold), 3. Seated spinal twist. Alleviates stiffness instantly!";
       }
 
       setChatMessages(prev => [
@@ -551,6 +513,19 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     }, 700);
   };
 
+  // Notifications
+  const [notifications, setNotifications] = useState<ActivityNotification[]>(INITIAL_NOTIFICATIONS);
+
+  const addNotification = (notif: Omit<ActivityNotification, 'id' | 'timeAgo' | 'read'>) => {
+    const newEntry: ActivityNotification = {
+      ...notif,
+      id: `notif-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      timeAgo: 'Just now',
+      read: false,
+    };
+    setNotifications(prev => [newEntry, ...prev.slice(0, 19)]);
+  };
+
   const markAllNotificationsRead = () => {
     setNotifications(prev => prev.map(n => ({ ...n, read: true })));
   };
@@ -558,6 +533,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const clearNotifications = () => {
     setNotifications([]);
   };
+
+  // Modals
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
   return (
     <AppContext.Provider
@@ -570,24 +550,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         toggleDarkMode,
         user,
         updateUser,
-
-        // Clinical
-        selectedDisease,
-        setSelectedDisease,
-        selectedModel,
-        setSelectedModel,
-        clinicalBiomarkers,
-        updateClinicalBiomarkers,
-        clinicalResult,
-        isAssessing,
-        runClinicalAssessment,
-        loadHealthyPreset,
-        loadHighRiskPreset,
-        downloadClinicalReport,
-        toastMessage,
-        setToastMessage,
-
-        // Wellness
         healthInputs,
         updateHealthInputs,
         healthAssessment,
@@ -617,6 +579,21 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         openSettingsModal: () => setIsSettingsModalOpen(true),
         closeSettingsModal: () => setIsSettingsModalOpen(false),
         t,
+
+        // Clinical
+        selectedDisease,
+        setSelectedDisease,
+        selectedModel,
+        setSelectedModel,
+        clinicalResult,
+        isAnalyzing,
+        loadHealthyPreset,
+        loadHighRiskPreset,
+        downloadReport,
+        toastMessage,
+        setToastMessage,
+        activeClinicalTool,
+        setActiveClinicalTool,
       }}
     >
       {children}

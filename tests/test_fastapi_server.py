@@ -26,16 +26,24 @@ def run_tests():
         assert "CareCompanion" in html
         print("[+] 1. GET / -> SUCCESS: CareCompanion HTML loaded.")
 
-    # Test CareCompanion Assets
-    with urllib.request.urlopen(f"{base_url}/assets/index-D4ZBeDGU.css") as response:
-        assert response.status == 200
-        css = response.read()
-        print(f"[+] 1b. GET /assets/index-D4ZBeDGU.css -> SUCCESS ({len(css)} bytes).")
+    # Test CareCompanion Assets dynamically from index HTML
+    import re
+    css_match = re.search(r'href="/assets/([^"]+\.css)"', html)
+    js_match = re.search(r'src="/assets/([^"]+\.js)"', html)
+    
+    if css_match:
+        css_file = css_match.group(1)
+        with urllib.request.urlopen(f"{base_url}/assets/{css_file}") as response:
+            assert response.status == 200
+            css = response.read()
+            print(f"[+] 1b. GET /assets/{css_file} -> SUCCESS ({len(css)} bytes).")
 
-    with urllib.request.urlopen(f"{base_url}/assets/index-CjvMxYsK.js") as response:
-        assert response.status == 200
-        js = response.read()
-        print(f"[+] 1c. GET /assets/index-CjvMxYsK.js -> SUCCESS ({len(js)} bytes).")
+    if js_match:
+        js_file = js_match.group(1)
+        with urllib.request.urlopen(f"{base_url}/assets/{js_file}") as response:
+            assert response.status == 200
+            js = response.read()
+            print(f"[+] 1c. GET /assets/{js_file} -> SUCCESS ({len(js)} bytes).")
 
     # 2. Test Heart Disease Predict
     heart_payload = {

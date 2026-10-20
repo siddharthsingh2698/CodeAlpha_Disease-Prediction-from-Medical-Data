@@ -1,6 +1,5 @@
 node_modules/
 build/
-# dist/ tracked for standalone server deployment
 coverage/
 .DS_Store
 *.log

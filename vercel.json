@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd carecompanion_ui && npm install && npm run build",
+  "outputDirectory": "carecompanion_ui/dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}

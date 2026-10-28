@@ -1,6 +1,10 @@
 # Disease-Prediction-from-Medical-Data
 
-[![CI Pipeline](https://github.com/siddharthsingh2698/Disease-Prediction-from-Medical-Data/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthsingh2698/Disease-Prediction-from-Medical-Data/actions/workflows/ci.yml)
+> 🌐 **Live Website Link**: [https://siddharthsingh2698.github.io/CodeAlpha_Disease-Prediction-from-Medical-Data/](https://siddharthsingh2698.github.io/CodeAlpha_Disease-Prediction-from-Medical-Data/)  
+> 💻 **Local Link**: [http://localhost:8000](http://localhost:8000)
+
+[![Deploy to GitHub Pages](https://github.com/siddharthsingh2698/CodeAlpha_Disease-Prediction-from-Medical-Data/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/siddharthsingh2698/CodeAlpha_Disease-Prediction-from-Medical-Data/actions/workflows/deploy-pages.yml)
+[![CI Pipeline](https://github.com/siddharthsingh2698/CodeAlpha_Disease-Prediction-from-Medical-Data/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthsingh2698/CodeAlpha_Disease-Prediction-from-Medical-Data/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.4+-orange.svg)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.0+-red.svg)](https://xgboost.readthedocs.io/)

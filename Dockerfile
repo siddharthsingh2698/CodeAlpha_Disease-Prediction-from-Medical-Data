@@ -1,4 +1,4 @@
-# Multi-Disease Clinical Risk Prediction Platform
+# Multi-Disease Clinical Risk Prediction Platform - CareCompanion
 # Production Dockerfile
 
 FROM python:3.11-slim
@@ -6,7 +6,8 @@ FROM python:3.11-slim
 # Environment settings
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app
+    PYTHONPATH=/app \
+    PORT=8000
 
 WORKDIR /app
 
@@ -24,12 +25,12 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy application codebase and artifacts
 COPY . /app/
 
-# Expose Streamlit default port
-EXPOSE 8501
+# Expose default port
+EXPOSE 8000
 
 # Health check to ensure service vitality
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+    CMD curl -f http://localhost:8000/ || exit 1
 
-# Launch Streamlit web application
-ENTRYPOINT ["streamlit", "run", "app/main.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
+# Launch FastAPI web application
+CMD ["sh", "-c", "uvicorn web_app:app --host 0.0.0.0 --port ${PORT:-8000}"]

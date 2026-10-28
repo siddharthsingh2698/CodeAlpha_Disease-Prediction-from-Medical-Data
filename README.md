@@ -122,23 +122,39 @@ python -m pytest
 
 ### 3. Launch the Web Application
 ```bash
-streamlit run app/main.py
+uvicorn web_app:app --host 127.0.0.1 --port 8000
 ```
-Open your browser at `http://localhost:8501`.
+Open your browser at `http://localhost:8000`.
 
 ---
 
 ## 🐳 Running with Docker
-
 Build and run the containerized application with a single command:
 ```bash
 # Build the Docker image
-docker build -t disease-predictor .
+docker build -t carecompanion-platform .
 
 # Run the container
-docker run -p 8501:8501 disease-predictor
+docker run -p 8000:8000 carecompanion-platform
 ```
-Access the application at `http://localhost:8501`.
+Access the application at `http://localhost:8000`.
+
+---
+
+## ☁️ Cloud Deployment (Render / Railway / Hugging Face Spaces)
+
+### Deploying to Render
+1. Create a free account at [render.com](https://render.com).
+2. Click **New +** -> **Web Service** -> connect your GitHub repository `Disease-Prediction-from-Medical-Data`.
+3. Configure the following settings:
+   - **Environment**: `Python`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn web_app:app --host 0.0.0.0 --port $PORT`
+4. Click **Deploy Web Service**. Render will build and deploy your application with a public `https://<your-subdomain>.onrender.com` URL.
+
+### Deploying to Railway
+1. Sign up on [railway.app](https://railway.app) and click **New Project** -> **Deploy from GitHub repo**.
+2. Railway detects the `Procfile` / `Dockerfile` automatically and launches the web service on a public HTTPS domain.
 
 ---
 

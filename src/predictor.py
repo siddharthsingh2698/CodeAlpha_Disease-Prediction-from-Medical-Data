@@ -7,6 +7,24 @@ import numpy as np
 from src.config import SAVED_MODELS_DIR, RISK_LOW_MAX, RISK_MODERATE_MAX
 from src.explainability import explain_patient_prediction
 
+def _patch_model_compat(estimator):
+    """Ensures cross-version scikit-learn unpickling compatibility."""
+    if estimator is None:
+        return estimator
+    if hasattr(estimator, "steps"):
+        for _, step in estimator.steps:
+            _patch_model_compat(step)
+    if hasattr(estimator, "named_steps"):
+        for step in estimator.named_steps.values():
+            _patch_model_compat(step)
+    if estimator.__class__.__name__ == "LogisticRegression":
+        if not hasattr(estimator, "multi_class"):
+            try:
+                estimator.multi_class = "auto"
+            except Exception:
+                pass
+    return estimator
+
 def load_disease_model(disease_name: str, model_type: str = "champion"):
     """
     Loads serialized model pipeline from disk.
@@ -24,7 +42,8 @@ def load_disease_model(disease_name: str, model_type: str = "champion"):
         if not model_path.exists():
             raise FileNotFoundError(f"Model file not found: {filename} in {SAVED_MODELS_DIR}")
             
-    return joblib.load(model_path)
+    model = joblib.load(model_path)
+    return _patch_model_compat(model)
 
 def predict_patient_risk(disease_name: str, patient_data: dict, model_type: str = "champion"):
     """
